@@ -1,0 +1,11 @@
+mat-form-field.mat-form-field {
+    font-size: 16px;
+    color:black;
+  }
+
+example-form {
+    display: inline-block;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
