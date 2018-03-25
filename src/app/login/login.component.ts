@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegistrationServiceService } from '../registration-service.service';
 import { Korisnik } from './Korisnik';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   korisnik: Korisnik;
 
-  constructor(private registrationService : RegistrationServiceService) { }
+  constructor(private registrationService : RegistrationServiceService, private router: Router) { }
 
   ngOnInit() {
 
@@ -30,13 +31,19 @@ export class LoginComponent implements OnInit {
     this.registrationService.login(email)
     .subscribe(data=>{
       console.log("Ispisi nesto za login front contr");
-      this.korisnik.email = data.email;
-      this.korisnik.lozinka = data.lozinka;
       
       if(data.lozinka === this.loginForm.value.lozinka){
         console.log("Lozinke se podudaraju");
       }else{
         console.log("Pogresno")
+      }
+
+      if(data.tipKorisnika === "sistemAdministrator"){
+        console.log("Ja sam sistem administrator");
+        this.router.navigate(['/firstForAdmin']);
+        
+      }else{
+        console.log("Ja sam obican covek");
       }
   })
   }

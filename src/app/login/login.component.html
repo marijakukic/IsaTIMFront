@@ -1,11 +1,20 @@
-<form class="example-form" (ngSubmit)="login()" [formGroup]="loginForm">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Email adresa" value="" formControlName="email">
-  </mat-form-field> <br>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Lozinka" value="" formControlName="lozinka">
-  </mat-form-field><br>
-
-  <a routerLink="/registration" class="btn btn-link">Registruj se!</a>
-  <button type="submit" class="btn btn-outline-dark">Prijavi se</button>
-</form>
+<mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <form class="example-form" (ngSubmit)="login()" [formGroup]="loginForm">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email adresa" value="" formControlName="email">
+            </mat-form-field> <br>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Lozinka" value="" formControlName="lozinka">
+            </mat-form-field><br>
+          
+            <a routerLink="/registration" class="btn btn-link">Registruj se!</a>
+            <button type="submit" class="btn btn-outline-dark">Prijavi se</button>
+          </form>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>

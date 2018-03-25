@@ -1,0 +1,33 @@
+<div style="text-align:center">
+    <h1>Registracija pozorista/bioskopa</h1>
+    <div>
+  
+    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="registrationTeatar()">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Naziv" formControlName="naziv"> 
+      </mat-form-field> <br>
+  
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Adresa" formControlName="adresa"> 
+        </mat-form-field> <br>
+  
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Promotivni opis" formControlName="promotivniOpis">
+      </mat-form-field><br>
+
+        <mat-form-field>
+            <mat-select placeholder="Tip" formControlName="tip">
+              <mat-option *ngFor="let tip of tipovi" [value]="tip.value" (click)="izaberiTip()">
+                {{ tip.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+      <br>
+      <a routerLink="/firstForAdmin" class="btn btn-link">Odustani!</a>
+      <button type="submit" class="btn btn-outline-dark">Registruj</button>
+      
+    </form>
+    </div>
+  </div>
+  

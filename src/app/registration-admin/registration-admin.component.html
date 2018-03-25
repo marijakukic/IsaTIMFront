@@ -1,0 +1,54 @@
+<div style="text-align:center">
+    <h1>Registracija administratora</h1>
+    <div *ngIf="!registrationFirm">
+  
+    <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="registration()">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ime administratora" formControlName="ime"> 
+      </mat-form-field> <br>
+  
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Prezime administratora" formControlName="prezime"> 
+        </mat-form-field> <br>
+  
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field><br>
+  
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Mesto stanovanja" formControlName="mestoStanovanja">
+      </mat-form-field><br>
+  
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Adresa" formControlName="adresa">
+      </mat-form-field><br>
+  
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Broj telefona" formControlName="brojTelefona"> 
+      </mat-form-field> <br>
+  
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Lozinka" formControlName="lozinka">
+      </mat-form-field><br>
+  
+      <mat-form-field class="example-full-width">
+          <input  matInput placeholder="Ponovite lozinku" formControlName="lozinka2">
+          <p *ngIf="lozinka!=lozinka2">Lozinke se razlikuju! </p>
+        </mat-form-field><br>
+
+        <mat-form-field>
+            <mat-select placeholder="Vrsta administratora" formControlName="tipKorisnika">
+              <mat-option *ngFor="let admin of administratori" [value]="admin.value" (click)="izaberiTip()">
+                {{ admin.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+      <br>
+      <a routerLink="/firstForAll" class="btn btn-link">Odustani!</a>
+      <button type="submit" class="btn btn-outline-dark">Registruj se</button>
+      
+    </form>
+    </div>
+  </div>
+  

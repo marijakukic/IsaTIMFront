@@ -5,13 +5,19 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { FirstForAllPageComponent } from './first-for-all-page/first-for-all-page.component';
+import { FirstForAdminPageComponent } from './first-for-admin-page/first-for-admin-page.component';
+import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
+import { RegistrationTheaterComponent } from './registration-theater/registration-theater.component';
 
 
 const routes : Routes = [
     {path: 'registration', component: RegistrationComponent},
     { path: 'firstPage', component:AppComponent},
     { path: 'login', component:LoginComponent,},
-    { path: 'firstForAll', component:FirstForAllPageComponent}
+    { path: 'firstForAll', component:FirstForAllPageComponent},
+    { path: 'firstForAdmin', component:FirstForAdminPageComponent},
+    { path: 'registrationAdmin', component:RegistrationAdminComponent},
+    { path: 'registrationPozoriste', component:RegistrationTheaterComponent}
 
 ];
 
@@ -24,4 +30,6 @@ const routes : Routes = [
 
 
 export class AppRoutingModule { }
-export const routingComponents = [RegistrationComponent, LoginComponent, FirstForAllPageComponent]
+export const routingComponents = [RegistrationComponent, LoginComponent, FirstForAllPageComponent,
+                                  FirstForAdminPageComponent, RegistrationAdminComponent,
+                                  RegistrationTheaterComponent]

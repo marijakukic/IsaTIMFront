@@ -19,4 +19,9 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/login/"+ email).map(res=>res.json());
   }
 
+  registrationTeatar(teatar:any){
+    console.log("Ovo je service front");
+    return this.http.post(this.url + "/registrationTeatar", teatar).map(res=>res.json());
+  }
+
 }

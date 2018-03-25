@@ -1,6 +1,23 @@
-<p>
-  ISA 2018
-</p>
+<mat-toolbar>
+  <span>ISA 2018</span>
+  <span class="example-fill-remaining-space"></span>
+  <a routerLink="/login" class="btn btn-link">Prijavi se</a> 
+</mat-toolbar>
 
-<a routerLink="/login" class="btn btn-link">Prijavi se!</a>
-<button mat-button click="gotoFirstPage()">Nastavi dalje bez logovanja!</button>
+<br>
+<br>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+        <div>
+            <button mat-button color="primary" click="gotoPrikazBioskopa()">VIDI POZORISTA</button>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <button mat-button color="primary" click="gotoPrikazPozorista()">VIDI BIOSKOPE</button>
+        </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+

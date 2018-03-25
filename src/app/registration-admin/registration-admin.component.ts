@@ -3,30 +3,31 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegistrationServiceService } from '../registration-service.service';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: 'app-registration-admin',
+  templateUrl: './registration-admin.component.html',
+  styleUrls: ['./registration-admin.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationAdminComponent implements OnInit {
 
-  constructor(private registrationService : RegistrationServiceService) { }
+  tipKorisnika: any;
+  registrationForm: FormGroup;
 
-  registrationForm : FormGroup;
-  tipKorisnika : any;
+  constructor(private registrationService: RegistrationServiceService) { }
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
       ime: new FormControl('',[Validators.required]),
       prezime: new FormControl('',[Validators.required]),
-      email: new FormControl('maksi@gmail.com',[Validators.required, Validators.email]),
+      email: new FormControl('',[Validators.required, Validators.email]),
       lozinka: new FormControl('', [Validators.required]),
       lozinka2: new FormControl('', [Validators.required]),
-      mestoStanovanja: new FormControl('Backa P', Validators.required),
+      mestoStanovanja: new FormControl('BP', Validators.required),
       adresa: new FormControl('ILR', [Validators.required]),
       brojTelefona: new FormControl('ILR', [Validators.required]),
-      tipKorisnika: new FormControl('registrovanKorisnik')
+      tipKorisnika: new FormControl('', Validators.required)
     })
   }
+
 
   registration(){
     let value = this.registrationForm.value;
@@ -40,5 +41,17 @@ export class RegistrationComponent implements OnInit {
   }
 
 
+  izaberiTip(){
+    if(this.registrationForm.controls['tipKorisnika'].value === 'adminPiB'){
+      this.tipKorisnika = "adminPiB";
+    }else{
+      this.tipKorisnika = "adminFAN";
+    }
+  }
+
+  administratori = [
+    {value: 'adminPiB', viewValue: 'administrator pozorista/bioskopa'},
+    {value: 'adminFAN', viewValue: 'administrator fan zone'}
+  ];
 
 }

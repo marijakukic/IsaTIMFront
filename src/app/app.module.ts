@@ -49,6 +49,9 @@ import {
 import { RegistrationComponent } from './registration/registration.component';
 import { FirstForAllPageComponent } from './first-for-all-page/first-for-all-page.component';
 import { RegistrationServiceService } from './registration-service.service';
+import { FirstForAdminPageComponent } from './first-for-admin-page/first-for-admin-page.component';
+import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
+import { RegistrationTheaterComponent } from './registration-theater/registration-theater.component';
   
 
 @NgModule({
@@ -56,7 +59,10 @@ import { RegistrationServiceService } from './registration-service.service';
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    FirstForAllPageComponent
+    FirstForAllPageComponent,
+    FirstForAdminPageComponent,
+    RegistrationAdminComponent,
+    RegistrationTheaterComponent
   ],
   imports: [
     FormsModule,
