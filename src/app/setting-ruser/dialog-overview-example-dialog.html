@@ -1,0 +1,19 @@
+Izmenite vase podatke:
+
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Ime" [(ngModel)]="korisnik.ime">  
+</mat-form-field><br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Prezime" [(ngModel)]="korisnik.prezime">
+</mat-form-field><br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Adresa" [(ngModel)]="korisnik.adresa">
+</mat-form-field><br>
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Mesto stanovanja" [(ngModel)]="korisnik.mestoStanovanja"> 
+</mat-form-field><br>
+
+
+<button mat-button (click)="close()">Odustani!</button>
+<button mat-button >Promeni lozinku</button>
+<button mat-button (click)="saveEdit()">Sacuvaj izmene</button>

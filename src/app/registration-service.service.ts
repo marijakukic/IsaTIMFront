@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class RegistrationServiceService {
 
   private url = "http://localhost:9000";
+  public user:any;
 
   constructor(private http : Http) { }
 
@@ -24,4 +25,7 @@ export class RegistrationServiceService {
     return this.http.post(this.url + "/registrationTeatar", teatar).map(res=>res.json());
   }
 
+  getUserDetails(userId: any){
+    return this.http.get(this.url + "/getUserDetails/" + userId).map(res=>res.json());
+  }
 }

@@ -44,7 +44,8 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 import { RegistrationComponent } from './registration/registration.component';
 import { FirstForAllPageComponent } from './first-for-all-page/first-for-all-page.component';
@@ -53,6 +54,8 @@ import { FirstForAdminPageComponent } from './first-for-admin-page/first-for-adm
 import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
 import { RegistrationTheaterComponent } from './registration-theater/registration-theater.component';
 import { TeatarServiceService } from './teatar-service.service';
+import { HomePageForUserComponent } from './home-page-for-user/home-page-for-user.component';
+import { SettingRuserComponent, DialogOverviewExampleDialog } from './setting-ruser/setting-ruser.component';
   
 
 @NgModule({
@@ -63,7 +66,10 @@ import { TeatarServiceService } from './teatar-service.service';
     FirstForAllPageComponent,
     FirstForAdminPageComponent,
     RegistrationAdminComponent,
-    RegistrationTheaterComponent
+    RegistrationTheaterComponent,
+    HomePageForUserComponent,
+    SettingRuserComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     FormsModule,
@@ -108,6 +114,7 @@ import { TeatarServiceService } from './teatar-service.service';
   ],
   providers: [RegistrationServiceService,
               TeatarServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogOverviewExampleDialog]
 })
 export class AppModule { }

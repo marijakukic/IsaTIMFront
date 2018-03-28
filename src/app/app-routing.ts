@@ -8,16 +8,21 @@ import { FirstForAllPageComponent } from './first-for-all-page/first-for-all-pag
 import { FirstForAdminPageComponent } from './first-for-admin-page/first-for-admin-page.component';
 import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
 import { RegistrationTheaterComponent } from './registration-theater/registration-theater.component';
+import { HomePageForUserComponent } from './home-page-for-user/home-page-for-user.component';
+import { SettingRuserComponent } from './setting-ruser/setting-ruser.component';
 
 
 const routes : Routes = [
-    {path: 'registration', component: RegistrationComponent},
+    { path: '', redirectTo:'/firstForAll', pathMatch:'full'},
+    { path: 'registration', component: RegistrationComponent},
     { path: 'firstPage', component:AppComponent},
     { path: 'login', component:LoginComponent,},
     { path: 'firstForAll', component:FirstForAllPageComponent},
     { path: 'firstForAdmin', component:FirstForAdminPageComponent},
     { path: 'registrationAdmin', component:RegistrationAdminComponent},
-    { path: 'registrationPozoriste', component:RegistrationTheaterComponent}
+    { path: 'registrationPozoriste', component:RegistrationTheaterComponent},
+    { path: 'homePageForRUser', component:HomePageForUserComponent},
+    { path: 'settingsRUser', component:SettingRuserComponent}
 
 ];
 
@@ -32,4 +37,5 @@ const routes : Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [RegistrationComponent, LoginComponent, FirstForAllPageComponent,
                                   FirstForAdminPageComponent, RegistrationAdminComponent,
-                                  RegistrationTheaterComponent]
+                                  RegistrationTheaterComponent,HomePageForUserComponent,
+                                  SettingRuserComponent]

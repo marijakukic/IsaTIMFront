@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegistrationServiceService } from '../registration-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,7 @@ import { RegistrationServiceService } from '../registration-service.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private registrationService : RegistrationServiceService) { }
+  constructor(private registrationService : RegistrationServiceService,private router: Router) { }
 
   registrationForm : FormGroup;
   tipKorisnika : any;
@@ -34,7 +35,8 @@ export class RegistrationComponent implements OnInit {
     this.registrationService.registration(value)
            .subscribe(data=>{
                console.log(data.ime);
-               console.log("Ispisi nesto");
+               console.log("Uspesna registracija, molim vas ulogujte se" );
+               this.router.navigate(['/login']);
            })
 
   }

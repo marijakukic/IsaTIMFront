@@ -1,0 +1,13 @@
+<p>
+  home-page-for-user works!
+</p>
+
+<button mat-button [matMenuTriggerFor]="menu" routerLink='/homePageForRUser'>Home</button>
+<button mat-button [matMenuTriggerFor]="menu">Pozorista</button>
+<button mat-button [matMenuTriggerFor]="menu">Bioskopi</button>
+<button mat-button [matMenuTriggerFor]="menu">Prijatelji</button>
+<button mat-button [matMenuTriggerFor]="menu">Rezervacije</button>
+<button mat-button [matMenuTriggerFor]="menu" routerLink='/settingsRUser'> Podesavanja</button>
+<mat-menu #menu="matMenu">
+</mat-menu>
+

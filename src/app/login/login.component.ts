@@ -30,10 +30,14 @@ export class LoginComponent implements OnInit {
     console.log("aaaaaaaaaaaaa" + email);
     this.registrationService.login(email)
     .subscribe(data=>{
-      console.log("Ispisi nesto za login front contr");
+      
       
       if(data.lozinka === this.loginForm.value.lozinka){
         console.log("Lozinke se podudaraju");
+        this.registrationService.user = data;
+        console.log("Oooooooooooooooo" + this.registrationService.user);
+        this.router.navigate(['/homePageForRUser']);
+        
       }else{
         console.log("Pogresno")
       }
