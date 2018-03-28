@@ -19,7 +19,7 @@ export class RegistrationTheaterComponent implements OnInit {
       naziv: new FormControl('',[Validators.required]),
       adresa: new FormControl('',[Validators.required]),
       promotivniOpis: new FormControl('',[Validators.required]),
-      tip: new FormControl('',[Validators.required, Validators.email])
+      tip: new FormControl('',[Validators.required])
     })
   }
 

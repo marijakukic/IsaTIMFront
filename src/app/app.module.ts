@@ -52,6 +52,7 @@ import { RegistrationServiceService } from './registration-service.service';
 import { FirstForAdminPageComponent } from './first-for-admin-page/first-for-admin-page.component';
 import { RegistrationAdminComponent } from './registration-admin/registration-admin.component';
 import { RegistrationTheaterComponent } from './registration-theater/registration-theater.component';
+import { TeatarServiceService } from './teatar-service.service';
   
 
 @NgModule({
@@ -105,7 +106,8 @@ import { RegistrationTheaterComponent } from './registration-theater/registratio
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [RegistrationServiceService],
+  providers: [RegistrationServiceService,
+              TeatarServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
