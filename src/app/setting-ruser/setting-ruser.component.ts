@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatTableDataSource } from '@angular/material';
 import { RegistrationServiceService } from '../registration-service.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,10 +15,29 @@ export class SettingRuserComponent implements OnInit {
   prezime: string;
   mestoStanovanja: string;
   adresa: string;
+  korisnikId: number;
 
-  constructor(public dialog:MatDialog) { }
+
+
+  displayedColumns = ['Ime', 'Prezime'];
+  elementData: Prijatelj[];
+  korisnik:any;
+  dataSource = new MatTableDataSource<Prijatelj>(ELEMENT_DATA);
+
+  constructor(public dialog:MatDialog,public registrationService:RegistrationServiceService) { }
 
   ngOnInit() {
+
+    this.korisnikId = this.registrationService.user.id;
+    this.registrationService.listaPrijatelja(this.korisnikId)
+    .subscribe(data=>{
+      this.korisnik = data;
+      console.log(this.korisnik);
+      console.log("Ispisi nesto za prijatelje");
+
+      this.dataSource = new MatTableDataSource<Prijatelj>(this.korisnik);
+     
+  })
   }
 
   edit(): void {
@@ -32,6 +51,9 @@ export class SettingRuserComponent implements OnInit {
       this.prezime = result;
     });
   }
+
+
+
 
 
 }
@@ -78,10 +100,19 @@ export class DialogOverviewExampleDialog {
       })
       
     }
-    
 
     close(): void { 
       this.dialogRef.close();
     }
 
+}
+
+const ELEMENT_DATA: Prijatelj[] = [
+  {ime: '', prezime:''}
+];
+  
+
+export interface Prijatelj {
+  ime: string;
+  prezime: string;
 }

@@ -28,4 +28,8 @@ export class RegistrationServiceService {
   getUserDetails(userId: any){
     return this.http.get(this.url + "/getUserDetails/" + userId).map(res=>res.json());
   }
+
+  listaPrijatelja(korisnikId: number){
+    return this.http.get(this.url + "/getFriendsList/" + korisnikId).map(res => res.json());
+  }
 }

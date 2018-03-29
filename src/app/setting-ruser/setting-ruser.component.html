@@ -9,3 +9,32 @@
 
 <button mat-button (click)="edit()">Uredite profil</button>
 
+<p>Prijatelji </p>
+
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="ime">
+        <mat-header-cell *matHeaderCellDef> Ime </mat-header-cell>
+        <mat-cell *matCellDef="let korisnik"> {{korisnik.ime}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="prezime">
+        <mat-header-cell *matHeaderCellDef> Prezime </mat-header-cell>
+        <mat-cell *matCellDef="let korisnik"> {{korisnik.prezime}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+
