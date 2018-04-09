@@ -27,15 +27,12 @@ export class LoginComponent implements OnInit {
 
   login(){
     let email = this.loginForm.value.email;
-    console.log("aaaaaaaaaaaaa" + email);
     this.registrationService.login(email)
     .subscribe(data=>{
       
       
-      if(data.lozinka === this.loginForm.value.lozinka){
-        console.log("Lozinke se podudaraju");
+      if(data.lozinka === this.loginForm.value.lozinka && data.potvrdjenMail == true){
         this.registrationService.user = data;
-        console.log("Oooooooooooooooo" + this.registrationService.user);
         this.router.navigate(['/homePageForRUser']);
         
       }else{

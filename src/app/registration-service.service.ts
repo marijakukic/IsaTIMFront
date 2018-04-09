@@ -32,4 +32,17 @@ export class RegistrationServiceService {
   listaPrijatelja(korisnikId: number){
     return this.http.get(this.url + "/getFriendsList/" + korisnikId).map(res => res.json());
   }
+
+  getAllUsersExceptMe(korisnikId: number, imeS: string, prezimeS: string) {
+    return this.http.get(this.url + "/getAllUsersExceptMe/" + korisnikId + "/" + imeS + "/" + prezimeS).map(res => res.json());
+  }
+
+  sendFriendRequest(sender: number, reciever: number) {
+    return this.http.post(this.url + "/sendFriendRequest/" + sender + "/" + reciever, null).map(res => res.json());
+  }
+
+  acceptOrRefuseFriendRequest(sender: number, reciever: number, decision: boolean) {
+    return this.http.post(this.url + "/acceptOrRefuseFriendRequest/" + sender + "/" + reciever + "/" + decision, null).map(res => res.json());
+  }
+
 }

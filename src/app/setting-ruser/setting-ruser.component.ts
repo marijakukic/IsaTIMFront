@@ -17,27 +17,36 @@ export class SettingRuserComponent implements OnInit {
   adresa: string;
   korisnikId: number;
 
+  imeS: string;
+  prezimeS: string;
 
-
-  displayedColumns = ['Ime', 'Prezime'];
-  elementData: Prijatelj[];
+  displayedColumns = ['ime', 'prezime', 'zahtev'];
+  displayedColumnsPrijateljstvo = ['ime', 'prezime', 'operacija'];
+  elementData: Korisnik[];
   korisnik:any;
-  dataSource = new MatTableDataSource<Prijatelj>(ELEMENT_DATA);
+  prijatelj:any;
+  dataSource = new MatTableDataSource<Korisnik>(ELEMENT_DATA);
+  dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(ELEMENT_DATA_PRIJATELJSTVO);
 
   constructor(public dialog:MatDialog,public registrationService:RegistrationServiceService) { }
 
   ngOnInit() {
 
     this.korisnikId = this.registrationService.user.id;
-    this.registrationService.listaPrijatelja(this.korisnikId)
-    .subscribe(data=>{
-      this.korisnik = data;
-      console.log(this.korisnik);
-      console.log("Ispisi nesto za prijatelje");
 
-      this.dataSource = new MatTableDataSource<Prijatelj>(this.korisnik);
-     
-  })
+    this.registrationService.listaPrijatelja(this.korisnikId).subscribe(
+      data => {
+        this.dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(data);
+      }
+    )
+
+    this.registrationService.getAllUsersExceptMe(this.korisnikId, this.imeS, this.prezimeS).subscribe(
+      data => {
+        this.dataSource = new MatTableDataSource<Korisnik>(data);
+      }
+    )
+
+
   }
 
   edit(): void {
@@ -51,6 +60,39 @@ export class SettingRuserComponent implements OnInit {
       this.prezime = result;
     });
   }
+
+  posaljiZahtev(receiver) {
+    this.registrationService.sendFriendRequest(this.korisnikId, receiver).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+  }
+
+  prihvatiZahtev(decision, receiver) {
+    this.registrationService.acceptOrRefuseFriendRequest(this.korisnikId, receiver, decision).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+  }
+
+  obrisiPrijatelja(decision, receiver) {
+    this.registrationService.acceptOrRefuseFriendRequest(this.korisnikId, receiver, decision).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+  }
+
+  pretrazi(imeS, prezimeS) {
+    this.registrationService.getAllUsersExceptMe(this.korisnikId, imeS, prezimeS).subscribe(
+      data => {
+        this.dataSource = new MatTableDataSource<Korisnik>(data);
+      }
+    )
+  }
+  
 
 
 
@@ -107,12 +149,22 @@ export class DialogOverviewExampleDialog {
 
 }
 
-const ELEMENT_DATA: Prijatelj[] = [
+const ELEMENT_DATA: Korisnik[] = [
   {ime: '', prezime:''}
+];
+
+const ELEMENT_DATA_PRIJATELJSTVO: Prijateljstvo[] = [
+  {receiver: null, prijatelji: null}
 ];
   
 
-export interface Prijatelj {
+export interface Prijateljstvo {
+  receiver: Korisnik;
+  prijatelji: boolean;
+}
+
+export interface Korisnik {
   ime: string;
   prezime: string;
 }
+
