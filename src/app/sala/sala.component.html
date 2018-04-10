@@ -1,0 +1,37 @@
+<p>
+  sala works!
+</p>
+<button mat-button color="primary" (click)="novoMesto(1, '#0ff')">Novo mesto</button>
+<button mat-button color="primary" (click)="novoMesto(2, '#f00')">Novo mesto</button>
+
+<mat-select placeholder="Dodaj mesto u odredjeni segment">
+  <mat-option *ngFor="let segment of segments" (click)="novoMesto(segment.id, segment.boja)" >{{segment.naziv}}</mat-option>
+</mat-select>
+
+<div id="canvas"></div>
+
+<form class="example-form" [formGroup]="salaForm" (ngSubmit)="saveSala()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Naziv" formControlName="naziv"> 
+  </mat-form-field> <br>
+
+  <button mat-button type="submit" color="primary" >Sacuvaj salu</button>
+  
+</form>
+
+
+<form class="example-form" [formGroup]="segmentForm" (ngSubmit)="saveSegment()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Naziv" formControlName="naziv"> 
+  </mat-form-field> <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Boja" formControlName="boja"> 
+  </mat-form-field> <br>
+
+  <button mat-button type="submit" color="primary" >Sacuvaj segment</button>
+  
+</form>
+
+
+

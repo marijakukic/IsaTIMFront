@@ -10,6 +10,7 @@ import { RegistrationAdminComponent } from './registration-admin/registration-ad
 import { RegistrationTheaterComponent } from './registration-theater/registration-theater.component';
 import { HomePageForUserComponent } from './home-page-for-user/home-page-for-user.component';
 import { SettingRuserComponent } from './setting-ruser/setting-ruser.component';
+import { SalaComponent } from './sala/sala.component';
 
 
 const routes : Routes = [
@@ -22,7 +23,8 @@ const routes : Routes = [
     { path: 'registrationAdmin', component:RegistrationAdminComponent},
     { path: 'registrationPozoriste', component:RegistrationTheaterComponent},
     { path: 'homePageForRUser', component:HomePageForUserComponent},
-    { path: 'settingsRUser', component:SettingRuserComponent}
+    { path: 'settingsRUser', component:SettingRuserComponent},
+    { path: 'sala/:teatarID', component:SalaComponent}
 
 ];
 
@@ -38,4 +40,4 @@ export class AppRoutingModule { }
 export const routingComponents = [RegistrationComponent, LoginComponent, FirstForAllPageComponent,
                                   FirstForAdminPageComponent, RegistrationAdminComponent,
                                   RegistrationTheaterComponent,HomePageForUserComponent,
-                                  SettingRuserComponent]
+                                  SettingRuserComponent, SalaComponent]

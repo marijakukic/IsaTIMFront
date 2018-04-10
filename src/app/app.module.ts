@@ -56,6 +56,7 @@ import { RegistrationTheaterComponent } from './registration-theater/registratio
 import { TeatarServiceService } from './teatar-service.service';
 import { HomePageForUserComponent } from './home-page-for-user/home-page-for-user.component';
 import { SettingRuserComponent, DialogOverviewExampleDialog } from './setting-ruser/setting-ruser.component';
+import { SalaComponent } from './sala/sala.component';
   
 
 @NgModule({
@@ -69,7 +70,8 @@ import { SettingRuserComponent, DialogOverviewExampleDialog } from './setting-ru
     RegistrationTheaterComponent,
     HomePageForUserComponent,
     SettingRuserComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    SalaComponent
   ],
   imports: [
     FormsModule,

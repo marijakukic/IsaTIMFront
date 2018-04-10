@@ -53,4 +53,32 @@ export class RegistrationServiceService {
     return this.http.post(this.url + "/acceptOrRefuseFriendRequest/" + sender + "/" + reciever + "/" + decision, null).map(res => res.json());
   }
 
+  saveSala(sala: any, teatarID: number) {
+    sala.teatarId = teatarID;
+    return this.http.post(this.url + "/sala/saveSala", sala).map(res=>res.json());
+  }
+
+  saveSegment(segment: any, salaId: number) {
+    segment.salaId = salaId;
+    return this.http.post(this.url + "/segment/saveSegment", segment).map(res=>res.json());
+  }
+
+  getAllSalaSegments(salaId: number){
+    return this.http.get(this.url + "/segment/getAllSalaSegments/" + salaId).map(res => res.json());
+  }
+
+  saveMesto(salaId, segmentId, naziv, id, x, y, mesto: any) {
+    mesto.id = id;
+    mesto.salaId = salaId;
+    mesto.segmentId = segmentId;
+    mesto.naziv = naziv;
+    mesto.x = x;
+    mesto.y = y;
+    return this.http.post(this.url + "/mesto/saveMesto", mesto).map(res=>res.json());
+  }
+
+  deleteMesto(id){
+    return this.http.delete(this.url + "/mesto/deleteMesto/" + id).map(res=>res.toString)
+  }
+
 }
