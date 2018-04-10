@@ -16,23 +16,17 @@ Prezime: {{korisnik.prezime}} <br>
 
 <input matInput placeholder="Unesi ime ili prezime" value="" formControlName="imeIliPrezime">
 <div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-      <mat-cell *matCellDef="let bioskop"> {{bioskop.id}} </mat-cell>
-    </ng-container>
+  <mat-table #table [dataSource]="dataSource" matSort>
 
     <!-- Name Column -->
     <ng-container matColumnDef="naziv">
-      <mat-header-cell *matHeaderCellDef> Naziv </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </mat-header-cell>
       <mat-cell *matCellDef="let bioskop"> {{bioskop.naziv}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="adresa">
-      <mat-header-cell *matHeaderCellDef> Adresa </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Adresa </mat-header-cell>
       <mat-cell *matCellDef="let bioskop"> {{bioskop.adresa}} </mat-cell>
     </ng-container>
 
@@ -59,12 +53,6 @@ Prezime: {{korisnik.prezime}} <br>
   <p>VIDI POZORISTA</p>
   <div class="example-container mat-elevation-z8">
       <mat-table #table [dataSource]="dataSource2">
-    
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-          <mat-cell *matCellDef="let pozoriste"> {{pozoriste.id}} </mat-cell>
-        </ng-container>
     
         <!-- Name Column -->
         <ng-container matColumnDef="naziv">

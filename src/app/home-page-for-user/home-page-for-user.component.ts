@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegistrationServiceService } from '../registration-service.service';
 import { TeatarServiceService } from '../teatar-service.service';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator, Sort, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-home-page-for-user',
@@ -10,9 +10,13 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 })
 export class HomePageForUserComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+
   korisnik: any;
 
-  displayedColumns = ['id', 'naziv', 'adresa', 'promotivniOpis'];
+  displayedColumns = ['naziv', 'adresa', 'promotivniOpis'];
   elementData: Bioskop[];
   dataSource = new MatTableDataSource<Bioskop>(ELEMENT_DATA);
   pozoriste:any;
@@ -24,8 +28,9 @@ export class HomePageForUserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.korisnik = this.registrationService.user;
-
+    this.registrationService.getActiveUser().subscribe(data=>{
+      this.korisnik = data;
+    })
 
     this.teatarService.listaBioskopa()
       .subscribe(data=>{
@@ -35,6 +40,7 @@ export class HomePageForUserComponent implements OnInit {
         console.log("Ispisi nesto");
 
         this.dataSource = new MatTableDataSource<Bioskop>(this.bioskop);
+        this.dataSource.sort = this.sort;
        
     })
 
@@ -45,25 +51,26 @@ export class HomePageForUserComponent implements OnInit {
       console.log("Ispisi nesto");
 
       this.dataSource2 = new MatTableDataSource<Bioskop>(this.pozoriste);
+      this.dataSource2.sort = this.sort;
      
   })
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.dataSource2.sort = this.sort;
   }
 
 }
 
 
 const ELEMENT_DATA: Bioskop[] = [
-  {id: '1', naziv: '', adresa:'', promotivniOpis:''}
+  {naziv: '', adresa:'', promotivniOpis:''}
 ];
   
 export interface Bioskop {
-  id: string;
   naziv: string;
   adresa: string;
   promotivniOpis: string;

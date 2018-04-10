@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
       
       
       if(data.lozinka === this.loginForm.value.lozinka && data.potvrdjenMail == true){
-        this.registrationService.user = data;
+        this.registrationService.setActiveUser(data.id).subscribe(data=>{
+         console.log(data);
+      })
         this.router.navigate(['/homePageForRUser']);
         
       }else{

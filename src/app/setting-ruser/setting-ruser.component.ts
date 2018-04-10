@@ -32,19 +32,25 @@ export class SettingRuserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.korisnikId = this.registrationService.user.id;
+    this.registrationService.getActiveUser().subscribe(data=>{
+      console.log(data.id);
+      this.korisnikId = data.id;
 
-    this.registrationService.listaPrijatelja(this.korisnikId).subscribe(
-      data => {
-        this.dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(data);
-      }
-    )
+      this.registrationService.listaPrijatelja(data.id).subscribe(
+        data => {
+          this.dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(data);
+        }
+      )
+  
+      this.registrationService.getAllUsersExceptMe(data.id, this.imeS, this.prezimeS).subscribe(
+        data => {
+          this.dataSource = new MatTableDataSource<Korisnik>(data);
+        }
+      )
 
-    this.registrationService.getAllUsersExceptMe(this.korisnikId, this.imeS, this.prezimeS).subscribe(
-      data => {
-        this.dataSource = new MatTableDataSource<Korisnik>(data);
-      }
-    )
+    })
+
+    
 
 
   }
@@ -86,6 +92,12 @@ export class SettingRuserComponent implements OnInit {
   }
 
   pretrazi(imeS, prezimeS) {
+    if (imeS == "") {
+      imeS = "undefined";
+    }
+    if (prezimeS == "") {
+      prezimeS = "undefined";
+    }
     this.registrationService.getAllUsersExceptMe(this.korisnikId, imeS, prezimeS).subscribe(
       data => {
         this.dataSource = new MatTableDataSource<Korisnik>(data);
