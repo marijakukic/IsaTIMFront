@@ -36,6 +36,13 @@ Prezime: {{korisnik.prezime}} <br>
       <mat-cell *matCellDef="let bioskop"> {{bioskop.promotivniOpis}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="rezervacija">
+      <mat-header-cell *matHeaderCellDef> Rezervacija </mat-header-cell>
+      <mat-cell *matCellDef="let bioskop"> 
+        <button mat-button color="primary" (click)="rezervisi(bioskop.id)">Rezervisi</button>
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
@@ -70,6 +77,13 @@ Prezime: {{korisnik.prezime}} <br>
         <ng-container matColumnDef="promotivniOpis">
           <mat-header-cell *matHeaderCellDef> Promotivni opis </mat-header-cell>
           <mat-cell *matCellDef="let pozoriste"> {{pozoriste.promotivniOpis}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rezervacija">
+          <mat-header-cell *matHeaderCellDef> Rezervacija </mat-header-cell>
+          <mat-cell *matCellDef="let pozoriste"> 
+            <button mat-button color="primary" (click)="rezervisi(pozoriste.id)">Rezervisi</button>
+          </mat-cell>
         </ng-container>
     
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

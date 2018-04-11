@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegistrationServiceService } from '../registration-service.service';
 import { TeatarServiceService } from '../teatar-service.service';
 import { MatTableDataSource, MatPaginator, Sort, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page-for-user',
@@ -16,14 +17,15 @@ export class HomePageForUserComponent implements OnInit {
 
   korisnik: any;
 
-  displayedColumns = ['naziv', 'adresa', 'promotivniOpis'];
+  displayedColumns = ['naziv', 'adresa', 'promotivniOpis', 'rezervacija'];
   elementData: Bioskop[];
   dataSource = new MatTableDataSource<Bioskop>(ELEMENT_DATA);
   pozoriste:any;
   bioskop:any;
   dataSource2 = new MatTableDataSource<Bioskop>(ELEMENT_DATA);
 
-  constructor(public registrationService:RegistrationServiceService,
+  constructor(private router: Router,
+              public registrationService:RegistrationServiceService,
               private teatarService:TeatarServiceService) { }
 
   ngOnInit() {
@@ -62,6 +64,12 @@ export class HomePageForUserComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource2.sort = this.sort;
   }
+
+  rezervisi(teatarId) {
+    this.router.navigate(['/reservation', teatarId]);
+  }
+
+
 
 }
 

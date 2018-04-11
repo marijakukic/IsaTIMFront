@@ -67,6 +67,10 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/segment/getAllSalaSegments/" + salaId).map(res => res.json());
   }
 
+  getAllFreeSeats(teatarId: number, terminId: number){
+    return this.http.get(this.url + "/projekcija/getAllFreeSeats/" + teatarId + "/" + terminId).map(res => res.json());
+  }
+
   saveMesto(salaId, segmentId, naziv, id, x, y, mesto: any) {
     mesto.id = id;
     mesto.salaId = salaId;

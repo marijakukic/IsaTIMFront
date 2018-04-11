@@ -57,6 +57,7 @@ import { TeatarServiceService } from './teatar-service.service';
 import { HomePageForUserComponent } from './home-page-for-user/home-page-for-user.component';
 import { SettingRuserComponent, DialogOverviewExampleDialog } from './setting-ruser/setting-ruser.component';
 import { SalaComponent } from './sala/sala.component';
+import { ReservationComponent } from './reservation/reservation.component';
   
 
 @NgModule({
@@ -71,7 +72,8 @@ import { SalaComponent } from './sala/sala.component';
     HomePageForUserComponent,
     SettingRuserComponent,
     DialogOverviewExampleDialog,
-    SalaComponent
+    SalaComponent,
+    ReservationComponent
   ],
   imports: [
     FormsModule,
