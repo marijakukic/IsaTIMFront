@@ -4,4 +4,40 @@
 
 <button mat-button color="primary" (click)="getAllFreeSeats()">Mesta</button>
 
+<form [formGroup]="datumProjekcijeForm" (submit) = "getAllProjekcije()">
+
+  <div class="form-group">
+    <mat-form-field>
+      <input [matDatepicker]="datumProjekcije"
+              matInput
+              placeholder="Datum projekcije"
+              class="form-control"
+              formControlName="datumProjekcije" >
+      <mat-datepicker-toggle matSuffix [for]="datumProjekcije">
+      </mat-datepicker-toggle>
+      <mat-datepicker #datumProjekcije></mat-datepicker>
+    </mat-form-field>
+  </div>  
+
+  <button mat-button type="submit" [disabled] = "!datumProjekcijeForm.valid">Pronadji projekcije</button>
+
+</form>
+
+<mat-card *ngFor="let projekcija of projekcije">
+  <mat-card-header>
+    <mat-card-title>{{projekcija.film.naziv}}</mat-card-title>
+    <mat-card-subtitle>{{projekcija.film.zanr}}</mat-card-subtitle>
+  </mat-card-header>
+  <img style="width:300px;height:300px;" mat-card-image src={{projekcija.film.poster}} alt="poster">
+  <mat-card-content>
+    <div *ngFor="let termin of projekcija.termini">
+      <p>
+        {{termin.salaNaziv}} {{termin.vreme}} {{termin.cena}}din
+        <button mat-button color="primary" (click)="rezervisi(termin.id)">Rezervisi</button>
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
 <div id="canvas"></div>

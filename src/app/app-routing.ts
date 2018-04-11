@@ -12,6 +12,7 @@ import { HomePageForUserComponent } from './home-page-for-user/home-page-for-use
 import { SettingRuserComponent } from './setting-ruser/setting-ruser.component';
 import { SalaComponent } from './sala/sala.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
 
 
 const routes : Routes = [
@@ -26,7 +27,8 @@ const routes : Routes = [
     { path: 'homePageForRUser', component:HomePageForUserComponent},
     { path: 'settingsRUser', component:SettingRuserComponent},
     { path: 'sala/:teatarID', component:SalaComponent},
-    { path: 'reservation/:teatarID', component:ReservationComponent }
+    { path: 'reservation/:teatarID', component:ReservationComponent },
+    { path: 'seatReservation/:teatarID/:terminID', component:SeatReservationComponent }
 
 ];
 
@@ -42,4 +44,5 @@ export class AppRoutingModule { }
 export const routingComponents = [RegistrationComponent, LoginComponent, FirstForAllPageComponent,
                                   FirstForAdminPageComponent, RegistrationAdminComponent,
                                   RegistrationTheaterComponent,HomePageForUserComponent,
-                                  SettingRuserComponent, SalaComponent, ReservationComponent]
+                                  SettingRuserComponent, SalaComponent, ReservationComponent,
+                                  SeatReservationComponent]

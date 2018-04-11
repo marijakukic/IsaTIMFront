@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RegistrationServiceService } from '../registration-service.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 declare const SVG:any;
 
 @Component({
@@ -15,17 +16,35 @@ export class ReservationComponent implements OnInit {
   
   teatarID: number;
   draw: any;
-  
+  datumProjekcijeForm: FormGroup;
+  projekcije: any;
   
   ngOnInit() {
 
     this.teatarID = parseInt(this.route.snapshot.paramMap.get('teatarID'));
+
+    this.datumProjekcijeForm = new FormGroup({
+      datumProjekcije: new FormControl('',[Validators.required])
+    })
+
 
     this.draw = SVG('canvas').size(400, 400);
     const border = this.draw.rect(0, 0);
     border.size(390,390);
     border.fill({ color: '#111' })
 
+  }
+
+  getAllProjekcije() {
+    console.log("datumProjekcije: " + this.datumProjekcijeForm.value.datumProjekcije);
+    this.registrationService.getAllProjekcije(this.teatarID, this.datumProjekcijeForm.value.datumProjekcije).subscribe(data=>{
+      console.log(data);
+      this.projekcije = data;
+    })
+  }
+
+  rezervisi(terminId) {
+    this.router.navigate(['/seatReservation', this.teatarID, terminId]);
   }
 
   getAllFreeSeats() {
@@ -37,7 +56,6 @@ export class ReservationComponent implements OnInit {
           rect.size(50,50);
           
           rect.data('nazivMesta', { value: { data: data[_i].naziv }});
-          //u mestu cuvaj segment pa boju iz segmenta uzmi
           rect.fill({ color: data[_i].segment.boja })
           rect.attr('x', data[_i].x);
           rect.attr('y', data[_i].y);

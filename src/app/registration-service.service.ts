@@ -71,6 +71,10 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/projekcija/getAllFreeSeats/" + teatarId + "/" + terminId).map(res => res.json());
   }
 
+  getAllProjekcije(teatarId: number, datum: string) {
+    return this.http.get(this.url + "/projekcija/getProjectionsForDate/" + teatarId + "/" + datum).map(res => res.json());
+  }
+
   saveMesto(salaId, segmentId, naziv, id, x, y, mesto: any) {
     mesto.id = id;
     mesto.salaId = salaId;
@@ -83,6 +87,10 @@ export class RegistrationServiceService {
 
   deleteMesto(id){
     return this.http.delete(this.url + "/mesto/deleteMesto/" + id).map(res=>res.toString)
+  }
+
+  saveRezervacija(terminId: number, mestoId: number, korisnikId: number, poziv: boolean) {
+    return this.http.post(this.url + "/rezervacija/saveRezervacija/" + terminId + "/" + mestoId + "/" + korisnikId + "/" + poziv, null).map(res=>res.json());
   }
 
 }

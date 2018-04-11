@@ -58,6 +58,7 @@ import { HomePageForUserComponent } from './home-page-for-user/home-page-for-use
 import { SettingRuserComponent, DialogOverviewExampleDialog } from './setting-ruser/setting-ruser.component';
 import { SalaComponent } from './sala/sala.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
   
 
 @NgModule({
@@ -73,7 +74,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     SettingRuserComponent,
     DialogOverviewExampleDialog,
     SalaComponent,
-    ReservationComponent
+    ReservationComponent,
+    SeatReservationComponent
   ],
   imports: [
     FormsModule,
