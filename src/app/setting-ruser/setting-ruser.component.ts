@@ -137,20 +137,24 @@ export class DialogOverviewExampleDialog {
       //   mestoStanovanja: new FormControl(''),
       // })
 
-      this.korisnikId = this.registrationService.user.id;
-        this.registrationService.getUserDetails(this.korisnikId)
-          .subscribe(data=>{
-            this.korisnik = data;
-            console.log("Ispisi nesto za details front contr");
-          })
+      this.registrationService.getActiveUser().subscribe(data=>{
+        this.korisnikId = data.id;
+        this.registrationService.getUserDetails(data.id).subscribe(data=>{
+          this.korisnik = data;
+          console.log("Ispisi nesto za details front contr");
+        })       
+      })
+
+      
     }
 
     saveEdit(){
-      this.registrationService.registration(this.korisnik)
+      this.registrationService.editUser(this.korisnik)
       .subscribe(data=>{
         console.log("Ispisi nesto za reg ponovo  front contr");
         console.log(data);
         this.router.navigate(['/homePageForRUser']);
+        this.dialogRef.close();
       })
       
     }

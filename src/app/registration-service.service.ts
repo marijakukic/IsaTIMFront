@@ -11,8 +11,11 @@ export class RegistrationServiceService {
   constructor(private http : Http) { }
 
   registration(korisnik:any){
-    console.log("Ovo je service front");
     return this.http.post(this.url + "/registration", korisnik).map(res=>res.json());
+  }
+
+  editUser(korisnik:any){
+    return this.http.post(this.url + "/editUser", korisnik).map(res=>res.json());
   }
 
   login(email){
@@ -95,6 +98,41 @@ export class RegistrationServiceService {
 
   getAllRekvizite(teatarId: number, stanje: string) {
     return this.http.get(this.url + "/fanZona/getAllRekvizite/" + teatarId + "/" + stanje).map(res => res.json());
+  }
+
+  getAllMojeRekvizite(teatarId: number, stanje: string) {
+    return this.http.get(this.url + "/fanZona/getAllMojeRekvizite/" + teatarId + "/" + stanje).map(res => res.json());
+  }
+
+  savePonuda(teatarId, korisnikId, rekvizitId, cena) {
+    var ponuda: any;
+    ponuda = {};
+    ponuda.teatarId = teatarId;
+    ponuda.korisnikId = korisnikId;
+    ponuda.rekvizitId = rekvizitId;
+    ponuda.cena = cena;
+    return this.http.post(this.url + "/ponuda/savePonuda", ponuda).map(res=>res.json());
+  }
+
+  findPonuda(korisnikId: number, rekvizitId: number) {
+    return this.http.get(this.url + "/ponuda/findPonuda/" + korisnikId + "/" + rekvizitId).map(res => res.json());
+  }
+
+  saveKupovina(teatarId, korisnikId, rekvizitId, cena) {
+    var kupovina: any;
+    kupovina = {};
+    kupovina.teatarId = teatarId;
+    kupovina.korisnikId = korisnikId;
+    kupovina.rekvizitId = rekvizitId;
+    kupovina.cena = cena;
+    return this.http.post(this.url + "/kupovina/saveKupovina", kupovina).map(res=>res.json());
+  }
+
+  saveOglas(teatarId: number, korisnikId: number, oglas: any) {
+    oglas.teatarId = teatarId;
+    oglas.korisnikId = korisnikId;
+    oglas.stanje = "polovan";
+    return this.http.post(this.url + "/rekvizit/saveRekvizit", oglas).map(res=>res.json());
   }
 
 }

@@ -63,6 +63,9 @@ export class HomePageForUserComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource2.sort = this.sort;
+    this.registrationService.getActiveUser().subscribe(data=>{
+      this.korisnik = data;
+    })
   }
 
   rezervisi(teatarId) {

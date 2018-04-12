@@ -1,8 +1,9 @@
-<button mat-button color="warn" (click)="zvanicnaProdavnica = true">Zvanicna prodavnica</button>
-<button mat-button color="warn" (click)="zvanicnaProdavnica = false">Oglasi</button>
+<button mat-button color="warn" (click)="aktivnaStranica = 'zvanicnaProdavnica'; refresh()">Zvanicna prodavnica</button>
+<button mat-button color="warn" (click)="aktivnaStranica = 'oglasi'; refresh()">Oglasi</button>
+<button mat-button color="warn" (click)="aktivnaStranica = 'napraviOglas'; refresh()">Napravi oglas</button>
+<button mat-button color="warn" (click)="aktivnaStranica = 'pregledMojihOglasa'; refresh()">Pregled mojih oglasa</button>
 
-
-<div *ngIf="zvanicnaProdavnica == true">
+<div *ngIf="aktivnaStranica == 'zvanicnaProdavnica'">
   <mat-card *ngFor="let rekvizit of rekviziti">
     <mat-card-header>
       <mat-card-title>{{rekvizit.naziv}}</mat-card-title>
@@ -13,7 +14,7 @@
       <div>
         <p>
           Cena: {{rekvizit.cena}}din
-          <button mat-button color="primary" (click)="kupi(rekvizit.id)">Kupi</button>
+          <button mat-button color="primary" (click)="kupi(rekvizit)">Kupi</button>
         </p>
       </div>
     </mat-card-content>
@@ -21,7 +22,7 @@
 </div>
 
 
-<div *ngIf="zvanicnaProdavnica == false">
+<div *ngIf="aktivnaStranica == 'oglasi'">
   <mat-card *ngFor="let polovanRekvizit of polovniRekviziti">
     <mat-card-header>
       <mat-card-title>{{polovanRekvizit.naziv}}</mat-card-title>
@@ -38,7 +39,7 @@
       <form class="example-form">
         <mat-form-field class="example-full-width">
           <input id={{polovanRekvizit.id}} type="number"
-                  min="0"
+                  min=0
                   matInput 
                   placeholder="Ponudjena cena" 
                   class="form-control"
@@ -46,7 +47,84 @@
         </mat-form-field>
       </form>
       </div>
-      <button mat-button color="primary" (click)="sendPonuda(polovanRekvizit.id)">Licitiraj</button>
+      <button mat-button color="primary" (click)="findPonuda(polovanRekvizit.id)">Poslednja ponuda</button>
+      <button mat-button color="warn" (click)="sendPonuda(polovanRekvizit.id)">Licitiraj</button>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<div *ngIf="aktivnaStranica == 'napraviOglas'">
+
+  <form [formGroup]="napraviOglasForm" (submit) = "napraviOglas()">
+    
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Naziv"
+                class="form-control"
+                formControlName="naziv"
+                required> 
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <textarea type="text"
+                  matInput 
+                  placeholder="Opis" 
+                  class="form-control"
+                  formControlName="opis" 
+                  required>
+          </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Ubacite url slike"
+                class="form-control"
+                formControlName="slika"> 
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field>
+        <input [matDatepicker]="datum"
+                matInput
+                placeholder="Datum do kada je aktivno prikupljanje ponuda"
+                class="form-control"
+                formControlName="datum" >
+        <mat-datepicker-toggle matSuffix [for]="datum">
+        </mat-datepicker-toggle>
+        <mat-datepicker #datum></mat-datepicker>
+      </mat-form-field>
+    </div>
+  
+    <button mat-button color="primary" type="submit" [disabled] = "!napraviOglasForm.valid">Sacuvaj</button>
+  
+  </form>
+
+</div>
+
+<div *ngIf="aktivnaStranica == 'pregledMojihOglasa'">
+
+  <mat-card *ngFor="let mojRekvizit of mojiRekviziti">
+    <mat-card-header>
+      <mat-card-title>{{mojRekvizit.naziv}}</mat-card-title>
+      <mat-card-subtitle>{{mojRekvizit.opis}}</mat-card-subtitle>
+    </mat-card-header>
+    <img style="width:300px;height:300px;" mat-card-image src={{mojRekvizit.slika}} alt="slika">
+    <mat-card-content>
+      <div>
+        <p>
+          <button mat-button color="primary" (click)="pregledPonuda(mojRekvizit)">Pregled ponuda</button>
+        </p>
+      </div>
     </mat-card-content>
   </mat-card>
 
