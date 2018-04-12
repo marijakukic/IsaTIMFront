@@ -1,0 +1,53 @@
+<button mat-button color="warn" (click)="zvanicnaProdavnica = true">Zvanicna prodavnica</button>
+<button mat-button color="warn" (click)="zvanicnaProdavnica = false">Oglasi</button>
+
+
+<div *ngIf="zvanicnaProdavnica == true">
+  <mat-card *ngFor="let rekvizit of rekviziti">
+    <mat-card-header>
+      <mat-card-title>{{rekvizit.naziv}}</mat-card-title>
+      <mat-card-subtitle>{{rekvizit.opis}}</mat-card-subtitle>
+    </mat-card-header>
+    <img style="width:300px;height:300px;" mat-card-image src={{rekvizit.slika}} alt="slika">
+    <mat-card-content>
+      <div>
+        <p>
+          Cena: {{rekvizit.cena}}din
+          <button mat-button color="primary" (click)="kupi(rekvizit.id)">Kupi</button>
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<div *ngIf="zvanicnaProdavnica == false">
+  <mat-card *ngFor="let polovanRekvizit of polovniRekviziti">
+    <mat-card-header>
+      <mat-card-title>{{polovanRekvizit.naziv}}</mat-card-title>
+      <mat-card-subtitle>{{polovanRekvizit.opis}}</mat-card-subtitle>
+    </mat-card-header>
+    <img style="width:300px;height:300px;" mat-card-image src={{polovanRekvizit.slika}} alt="slika">
+    <mat-card-content>
+      <div>
+        <p>
+          Datum isteka: {{polovanRekvizit.datum}}
+        </p>
+      </div>
+      <div>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input id={{polovanRekvizit.id}} type="number"
+                  min="0"
+                  matInput 
+                  placeholder="Ponudjena cena" 
+                  class="form-control"
+                  required>
+        </mat-form-field>
+      </form>
+      </div>
+      <button mat-button color="primary" (click)="sendPonuda(polovanRekvizit.id)">Licitiraj</button>
+    </mat-card-content>
+  </mat-card>
+
+</div>

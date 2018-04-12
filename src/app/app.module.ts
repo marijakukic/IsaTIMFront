@@ -59,6 +59,7 @@ import { SettingRuserComponent, DialogOverviewExampleDialog } from './setting-ru
 import { SalaComponent } from './sala/sala.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
+import { FanzonaComponent } from './fanzona/fanzona.component';
   
 
 @NgModule({
@@ -75,7 +76,8 @@ import { SeatReservationComponent } from './seat-reservation/seat-reservation.co
     DialogOverviewExampleDialog,
     SalaComponent,
     ReservationComponent,
-    SeatReservationComponent
+    SeatReservationComponent,
+    FanzonaComponent
   ],
   imports: [
     FormsModule,

@@ -13,6 +13,7 @@ import { SettingRuserComponent } from './setting-ruser/setting-ruser.component';
 import { SalaComponent } from './sala/sala.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
+import { FanzonaComponent } from './fanzona/fanzona.component';
 
 
 const routes : Routes = [
@@ -28,7 +29,8 @@ const routes : Routes = [
     { path: 'settingsRUser', component:SettingRuserComponent},
     { path: 'sala/:teatarID', component:SalaComponent},
     { path: 'reservation/:teatarID', component:ReservationComponent },
-    { path: 'seatReservation/:teatarID/:terminID', component:SeatReservationComponent }
+    { path: 'seatReservation/:teatarID/:terminID', component:SeatReservationComponent },
+    { path: 'fanzona/:teatarID', component:FanzonaComponent }
 
 ];
 
@@ -45,4 +47,4 @@ export const routingComponents = [RegistrationComponent, LoginComponent, FirstFo
                                   FirstForAdminPageComponent, RegistrationAdminComponent,
                                   RegistrationTheaterComponent,HomePageForUserComponent,
                                   SettingRuserComponent, SalaComponent, ReservationComponent,
-                                  SeatReservationComponent]
+                                  SeatReservationComponent, FanzonaComponent]

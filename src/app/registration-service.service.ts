@@ -93,4 +93,8 @@ export class RegistrationServiceService {
     return this.http.post(this.url + "/rezervacija/saveRezervacija/" + terminId + "/" + mestoId + "/" + korisnikId + "/" + poziv, null).map(res=>res.json());
   }
 
+  getAllRekvizite(teatarId: number, stanje: string) {
+    return this.http.get(this.url + "/fanZona/getAllRekvizite/" + teatarId + "/" + stanje).map(res => res.json());
+  }
+
 }

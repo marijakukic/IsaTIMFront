@@ -69,6 +69,10 @@ export class HomePageForUserComponent implements OnInit {
     this.router.navigate(['/reservation', teatarId]);
   }
 
+  posjetiFanZonu(teatarId) {
+    this.router.navigate(['/fanzona', teatarId]);
+  }
+
 
 
 }
