@@ -14,6 +14,7 @@ import { SalaComponent } from './sala/sala.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
 import { FanzonaComponent } from './fanzona/fanzona.component';
+import { PonudeComponent } from './ponude/ponude.component';
 
 
 const routes : Routes = [
@@ -30,7 +31,9 @@ const routes : Routes = [
     { path: 'sala/:teatarID', component:SalaComponent},
     { path: 'reservation/:teatarID', component:ReservationComponent },
     { path: 'seatReservation/:teatarID/:terminID', component:SeatReservationComponent },
-    { path: 'fanzona/:teatarID', component:FanzonaComponent }
+    { path: 'fanzona/:teatarID', component:FanzonaComponent },
+    { path: 'ponude/:rekvizitID', component:PonudeComponent }
+
 
 ];
 
@@ -47,4 +50,4 @@ export const routingComponents = [RegistrationComponent, LoginComponent, FirstFo
                                   FirstForAdminPageComponent, RegistrationAdminComponent,
                                   RegistrationTheaterComponent,HomePageForUserComponent,
                                   SettingRuserComponent, SalaComponent, ReservationComponent,
-                                  SeatReservationComponent, FanzonaComponent]
+                                  SeatReservationComponent, FanzonaComponent, PonudeComponent]

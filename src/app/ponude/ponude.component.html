@@ -1,0 +1,5 @@
+<p *ngFor="let ponuda of ponude">
+  <b>{{ponuda.korisnik.ime}} {{ponuda.korisnik.prezime}} </b>
+  <i>Cena: {{ponuda.cena}}</i>
+  <button mat-button color="primary" (click)="prihvatiPonudu(ponuda)">Prihvati ponudu</button>
+</p>

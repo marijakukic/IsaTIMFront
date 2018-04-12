@@ -118,6 +118,10 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/ponuda/findPonuda/" + korisnikId + "/" + rekvizitId).map(res => res.json());
   }
 
+  prihvatiPonudu(ponuda) {
+    return this.http.post(this.url + "/ponuda/odaberi", ponuda).map(res=>res.json());
+  }
+
   saveKupovina(teatarId, korisnikId, rekvizitId, cena) {
     var kupovina: any;
     kupovina = {};
@@ -133,6 +137,10 @@ export class RegistrationServiceService {
     oglas.korisnikId = korisnikId;
     oglas.stanje = "polovan";
     return this.http.post(this.url + "/rekvizit/saveRekvizit", oglas).map(res=>res.json());
+  }
+
+  findPonudeByRekvizit(rekvizitId: number) {
+    return this.http.get(this.url + "/ponuda/findPonudeByRekvizit/" + rekvizitId).map(res => res.json());
   }
 
 }

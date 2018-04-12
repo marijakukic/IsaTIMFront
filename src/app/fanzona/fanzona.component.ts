@@ -95,6 +95,11 @@ export class FanzonaComponent implements OnInit {
 
   }
 
+  pregledPonuda(mojRekvizit) {
+    this.router.navigate(['/ponude', mojRekvizit.id]);
+  }
+
+
   refresh() {
     this.registrationService.getAllRekvizite(this.teatarID, "nov").subscribe(data=>{
       console.log(data);

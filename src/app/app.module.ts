@@ -60,6 +60,7 @@ import { SalaComponent } from './sala/sala.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
 import { FanzonaComponent } from './fanzona/fanzona.component';
+import { PonudeComponent } from './ponude/ponude.component';
   
 
 @NgModule({
@@ -77,7 +78,8 @@ import { FanzonaComponent } from './fanzona/fanzona.component';
     SalaComponent,
     ReservationComponent,
     SeatReservationComponent,
-    FanzonaComponent
+    FanzonaComponent,
+    PonudeComponent
   ],
   imports: [
     FormsModule,
