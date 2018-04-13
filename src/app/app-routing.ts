@@ -15,6 +15,11 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
 import { FanzonaComponent } from './fanzona/fanzona.component';
 import { PonudeComponent } from './ponude/ponude.component';
+import { AllCinemasComponent } from './all-cinemas/all-cinemas.component';
+import { AllTheatersComponent } from './all-theaters/all-theaters.component';
+import { ActiveReservationsComponent } from './active-reservations/active-reservations.component';
+import { HistoryComponent } from './history/history.component';
+import { PrijateljiComponent } from './prijatelji/prijatelji.component';
 
 
 const routes : Routes = [
@@ -32,7 +37,12 @@ const routes : Routes = [
     { path: 'reservation/:teatarID', component:ReservationComponent },
     { path: 'seatReservation/:teatarID/:terminID', component:SeatReservationComponent },
     { path: 'fanzona/:teatarID', component:FanzonaComponent },
-    { path: 'ponude/:rekvizitID', component:PonudeComponent }
+    { path: 'ponude/:rekvizitID', component:PonudeComponent },
+    { path: 'bioskopi', component:AllCinemasComponent},
+    { path: 'pozorista', component:AllTheatersComponent },
+    { path: 'aktivneRezervacije', component:ActiveReservationsComponent },
+    { path: 'istorija', component:HistoryComponent },
+    { path: 'prijatelji', component:PrijateljiComponent }
 
 
 ];
@@ -50,4 +60,7 @@ export const routingComponents = [RegistrationComponent, LoginComponent, FirstFo
                                   FirstForAdminPageComponent, RegistrationAdminComponent,
                                   RegistrationTheaterComponent,HomePageForUserComponent,
                                   SettingRuserComponent, SalaComponent, ReservationComponent,
-                                  SeatReservationComponent, FanzonaComponent, PonudeComponent]
+                                  SeatReservationComponent, FanzonaComponent, PonudeComponent,
+                                  AllCinemasComponent, AllTheatersComponent, ActiveReservationsComponent,
+                                  HistoryComponent, PrijateljiComponent
+                                ]

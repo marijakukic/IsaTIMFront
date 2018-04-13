@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegistrationServiceService } from '../registration-service.service';
 import { MatTableDataSource } from '@angular/material';
-import { Prijateljstvo } from '../setting-ruser/setting-ruser.component';
 declare const SVG:any;
 
 @Component({
@@ -23,7 +22,7 @@ export class SeatReservationComponent implements OnInit {
   korisnikID: number;
 
   displayedColumnsPrijateljstvo = ['ime', 'prezime', 'pozovi'];
-  dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(ELEMENT_DATA_PRIJATELJSTVO);
+  dataSourcePrijateljstvo = new MatTableDataSource<any>();
 
   ngOnInit() {
     
@@ -68,8 +67,13 @@ export class SeatReservationComponent implements OnInit {
             var nazivMesta = rect.data('nazivMesta').value.data;
             var idMesta = rect.data('idMesta').value.data;
             
+            
             if (!alreadyRes.includes(idMesta)) {
               alreadyRes.push(idMesta);
+              alert('Uspesno ste rezervisali mesto: ' + nazivMesta);
+            }
+            else {
+              alert('Vec ste rezervisali mesto: ' + nazivMesta);
             }
             console.log('ID mesta koje zelim da rezervisem: ' + idMesta);
             
@@ -82,7 +86,7 @@ export class SeatReservationComponent implements OnInit {
       this.korisnikID = data.id;
       this.registrationService.listaPrijatelja(data.id).subscribe(
         data => {
-          this.dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(data);
+          this.dataSourcePrijateljstvo = new MatTableDataSource<any>(data);
         }
       )
 
@@ -120,7 +124,8 @@ export class SeatReservationComponent implements OnInit {
       j++;
     }
 
-    
+    alert("Rezervacija uspesna!");
+    this.router.navigate(['/aktivneRezervacije']);
 
   }
 
@@ -131,7 +136,3 @@ export class SeatReservationComponent implements OnInit {
   }
 
 }
-
-const ELEMENT_DATA_PRIJATELJSTVO: Prijateljstvo[] = [
-  {receiver: null, prijatelji: null}
-];

@@ -19,4 +19,11 @@ export class TeatarServiceService {
     return this.http.get(this.url + "/pozorista/svaPozorista").map(res=>res.json());
   }
 
+  listaSearch(naziv, tip) {
+    if (naziv == "") {
+      naziv = "undefined";
+    }
+    return this.http.get(this.url + "/searchPB/" + naziv + "/" + tip).map(res=>res.json());
+  }
+
 }

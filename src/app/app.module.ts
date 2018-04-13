@@ -61,6 +61,11 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { SeatReservationComponent } from './seat-reservation/seat-reservation.component';
 import { FanzonaComponent } from './fanzona/fanzona.component';
 import { PonudeComponent } from './ponude/ponude.component';
+import { AllCinemasComponent } from './all-cinemas/all-cinemas.component';
+import { AllTheatersComponent } from './all-theaters/all-theaters.component';
+import { ActiveReservationsComponent } from './active-reservations/active-reservations.component';
+import { HistoryComponent } from './history/history.component';
+import { PrijateljiComponent } from './prijatelji/prijatelji.component';
   
 
 @NgModule({
@@ -79,7 +84,12 @@ import { PonudeComponent } from './ponude/ponude.component';
     ReservationComponent,
     SeatReservationComponent,
     FanzonaComponent,
-    PonudeComponent
+    PonudeComponent,
+    AllCinemasComponent,
+    AllTheatersComponent,
+    ActiveReservationsComponent,
+    HistoryComponent,
+    PrijateljiComponent
   ],
   imports: [
     FormsModule,

@@ -20,13 +20,9 @@ export class SettingRuserComponent implements OnInit {
   imeS: string;
   prezimeS: string;
 
-  displayedColumns = ['ime', 'prezime', 'zahtev'];
-  displayedColumnsPrijateljstvo = ['ime', 'prezime', 'operacija'];
-  elementData: Korisnik[];
   korisnik:any;
   prijatelj:any;
-  dataSource = new MatTableDataSource<Korisnik>(ELEMENT_DATA);
-  dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(ELEMENT_DATA_PRIJATELJSTVO);
+
 
   constructor(public dialog:MatDialog,public registrationService:RegistrationServiceService) { }
 
@@ -35,24 +31,7 @@ export class SettingRuserComponent implements OnInit {
     this.registrationService.getActiveUser().subscribe(data=>{
       console.log(data.id);
       this.korisnikId = data.id;
-
-      this.registrationService.listaPrijatelja(data.id).subscribe(
-        data => {
-          this.dataSourcePrijateljstvo = new MatTableDataSource<Prijateljstvo>(data);
-        }
-      )
-  
-      this.registrationService.getAllUsersExceptMe(data.id, this.imeS, this.prezimeS).subscribe(
-        data => {
-          this.dataSource = new MatTableDataSource<Korisnik>(data);
-        }
-      )
-
     })
-
-    
-
-
   }
 
   edit(): void {
@@ -67,49 +46,6 @@ export class SettingRuserComponent implements OnInit {
     });
   }
 
-  posaljiZahtev(receiver) {
-    this.registrationService.sendFriendRequest(this.korisnikId, receiver).subscribe(
-      data => {
-        console.log(data);
-      }
-    )
-  }
-
-  prihvatiZahtev(decision, receiver) {
-    this.registrationService.acceptOrRefuseFriendRequest(this.korisnikId, receiver, decision).subscribe(
-      data => {
-        console.log(data);
-      }
-    )
-  }
-
-  obrisiPrijatelja(decision, receiver) {
-    this.registrationService.acceptOrRefuseFriendRequest(this.korisnikId, receiver, decision).subscribe(
-      data => {
-        console.log(data);
-      }
-    )
-  }
-
-  pretrazi(imeS, prezimeS) {
-    if (imeS == "") {
-      imeS = "undefined";
-    }
-    if (prezimeS == "") {
-      prezimeS = "undefined";
-    }
-    this.registrationService.getAllUsersExceptMe(this.korisnikId, imeS, prezimeS).subscribe(
-      data => {
-        this.dataSource = new MatTableDataSource<Korisnik>(data);
-      }
-    )
-  }
-  
-
-
-
-
-
 }
 
 @Component({
@@ -122,6 +58,10 @@ export class DialogOverviewExampleDialog {
   editForm : FormGroup;
   korisnikId: number;
 
+  aktivan: string;
+  lozinka1: string;
+  lozinka2: string;
+
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -130,31 +70,34 @@ export class DialogOverviewExampleDialog {
 
     ngOnInit(){
 
-      // this.editForm = new FormGroup({
-      //   ime: new FormControl(''),
-      //   prezime: new FormControl(''),
-      //   adresa: new FormControl(''),
-      //   mestoStanovanja: new FormControl(''),
-      // })
+      this.aktivan = "promenaPodataka";
+      this.lozinka1 = "";
+      this.lozinka2 = "";
+      this.korisnik = {};
 
       this.registrationService.getActiveUser().subscribe(data=>{
         this.korisnikId = data.id;
-        this.registrationService.getUserDetails(data.id).subscribe(data=>{
-          this.korisnik = data;
-          console.log("Ispisi nesto za details front contr");
-        })       
+        this.korisnik = data;      
       })
 
       
     }
 
     saveEdit(){
-      this.registrationService.editUser(this.korisnik)
-      .subscribe(data=>{
-        console.log("Ispisi nesto za reg ponovo  front contr");
-        console.log(data);
-        this.router.navigate(['/homePageForRUser']);
+      this.registrationService.editUser(this.korisnik).subscribe(data=>{
         this.dialogRef.close();
+        this.router.navigate(['/homePageForRUser']);
+      })
+      
+    }
+
+    saveEditLozinka(korisnik: any){
+      korisnik = this.korisnik;
+      korisnik.lozinka = this.lozinka1;
+      this.registrationService.editUser(korisnik).subscribe(data=>{
+        console.log("Promenjena lozinka je: " + data.lozinka);
+        this.dialogRef.close();
+        this.router.navigate(['/homePageForRUser']); 
       })
       
     }
@@ -165,22 +108,5 @@ export class DialogOverviewExampleDialog {
 
 }
 
-const ELEMENT_DATA: Korisnik[] = [
-  {ime: '', prezime:''}
-];
 
-const ELEMENT_DATA_PRIJATELJSTVO: Prijateljstvo[] = [
-  {receiver: null, prijatelji: null}
-];
-  
-
-export interface Prijateljstvo {
-  receiver: Korisnik;
-  prijatelji: boolean;
-}
-
-export interface Korisnik {
-  ime: string;
-  prezime: string;
-}
 

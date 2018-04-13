@@ -1,19 +1,30 @@
 Izmenite vase podatke:
+<div *ngIf="aktivan=='promenaPodataka'">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ime" [(ngModel)]="korisnik.ime">  
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Prezime" [(ngModel)]="korisnik.prezime">
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Adresa" [(ngModel)]="korisnik.adresa">
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Mesto stanovanja" [(ngModel)]="korisnik.mestoStanovanja"> 
+    </mat-form-field><br>
+</div>
 
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="Ime" [(ngModel)]="korisnik.ime">  
-</mat-form-field><br>
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="Prezime" [(ngModel)]="korisnik.prezime">
-</mat-form-field><br>
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="Adresa" [(ngModel)]="korisnik.adresa">
-</mat-form-field><br>
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="Mesto stanovanja" [(ngModel)]="korisnik.mestoStanovanja"> 
-</mat-form-field><br>
 
+<div *ngIf="aktivan=='promenaLozinke'">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nova lozinka" [(ngModel)]="lozinka1">  
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Ponovite Lozinku" [(ngModel)]="lozinka2">
+    </mat-form-field><br>
+</div>
 
-<button mat-button (click)="close()">Odustani!</button>
-<button mat-button >Promeni lozinku</button>
-<button mat-button (click)="saveEdit()">Sacuvaj izmene</button>
+<button mat-button (click)="close(); aktivan='promenaPodataka'">Odustani!</button>
+<button mat-button *ngIf="aktivan!=='promenaLozinke'" (click)="aktivan='promenaLozinke'">Promeni lozinku</button>
+<button mat-button *ngIf="aktivan=='promenaPodataka'" (click)="saveEdit()">Sacuvaj izmene</button>
+<button mat-button *ngIf="aktivan=='promenaLozinke'" [disabled]="(lozinka1!==lozinka2) || lozinka2==''" (click)="saveEditLozinka(korisnik)">Sacuvaj lozinku</button>

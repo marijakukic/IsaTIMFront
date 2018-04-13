@@ -27,16 +27,18 @@
     </mat-form-field> <br>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Lozinka" formControlName="lozinka">
+      <input type="password" matInput placeholder="Lozinka" formControlName="lozinka" id="lozinka">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width">
-        <input  matInput placeholder="Ponovite lozinku" formControlName="lozinka2">
-        <p *ngIf="lozinka!=lozinka2">Lozinke se razlikuju! </p>
-      </mat-form-field><br>
+        <input type="password" matInput placeholder="Ponovite lozinku" formControlName="lozinka2">
+    </mat-form-field><br>
+    <p *ngIf="!(registrationForm.value.lozinka == registrationForm.value.lozinka2)">Lozinke se razlikuju! </p>
   
     <a routerLink="/firstForAll" class="btn btn-link">Odustani!</a>
-    <button type="submit" class="btn btn-outline-dark">Registruj se</button>
+    <button mat-button type="submit" 
+    [disabled]="!registrationForm.valid || !(registrationForm.value.lozinka == registrationForm.value.lozinka2) || registrationForm.value.lozinka2==''" 
+    class="btn btn-outline-dark">Registruj se</button>
     
   </form>
 </div>

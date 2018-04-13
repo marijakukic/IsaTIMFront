@@ -1,0 +1,39 @@
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="naziv">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </mat-header-cell>
+        <mat-cell *matCellDef="let rezervacija"> {{rezervacija.teatar.naziv}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tip">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tip </mat-header-cell>
+          <mat-cell *matCellDef="let rezervacija"> {{rezervacija.teatar.tip}} </mat-cell>
+        </ng-container>
+
+      <ng-container matColumnDef="sala">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Sala </mat-header-cell>
+          <mat-cell *matCellDef="let rezervacija"> {{rezervacija.termin.salaNaziv}} </mat-cell>
+        </ng-container>
+  
+      <ng-container matColumnDef="nazivFilma">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv filma/predstave </mat-header-cell>
+        <mat-cell *matCellDef="let rezervacija"> {{rezervacija.projekcija.film.naziv}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="nazivMesta">
+        <mat-header-cell *matHeaderCellDef> Mesto </mat-header-cell>
+        <mat-cell *matCellDef="let rezervacija"> {{rezervacija.mesto.naziv}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+
+  </div>

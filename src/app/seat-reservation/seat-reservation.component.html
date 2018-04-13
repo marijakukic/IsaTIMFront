@@ -4,7 +4,7 @@
 
 <div id="canvas"></div>
 
-<button mat-button color="primary" (click)="nastavi()">Nastavi</button>
+<button mat-button color="primary" [disabled]="alreadyReserved.length == 0"(click)="nastavi()">Nastavi</button>
 
 <div *ngIf="alreadyReserved.length > 1">
 

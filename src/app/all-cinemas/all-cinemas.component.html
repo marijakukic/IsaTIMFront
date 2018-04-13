@@ -1,0 +1,48 @@
+<h2> Pronadji bioskop </h2>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Naziv bioskopa" [(ngModel)]="nazivBioskopa">
+  </mat-form-field>
+
+  <button mat-button color="primary" (click)="pretrazi(nazivBioskopa)">Pretrazi</button>
+
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </mat-header-cell>
+      <mat-cell *matCellDef="let bioskop"> {{bioskop.naziv}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="adresa">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Adresa </mat-header-cell>
+      <mat-cell *matCellDef="let bioskop"> {{bioskop.adresa}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="promotivniOpis">
+      <mat-header-cell *matHeaderCellDef> Promotivni opis </mat-header-cell>
+      <mat-cell *matCellDef="let bioskop"> {{bioskop.promotivniOpis}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rezervacija">
+      <mat-header-cell *matHeaderCellDef> Rezervacija </mat-header-cell>
+      <mat-cell *matCellDef="let bioskop"> 
+        <button mat-button color="primary" (click)="rezervisi(bioskop.id)">Rezervisi</button>
+        <button mat-button color="warn" (click)="posjetiFanZonu(bioskop.id)">Fan Zona</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

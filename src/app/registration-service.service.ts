@@ -19,8 +19,11 @@ export class RegistrationServiceService {
   }
 
   login(email){
-    console.log("Ovo je service login front");
     return this.http.get(this.url + "/login/"+ email).map(res=>res.json());
+  }
+
+  odjaviSe() {
+    return this.http.get(this.url + "/logout").map(res=>res.toString);
   }
 
   setActiveUser(userId: number) {
@@ -141,6 +144,18 @@ export class RegistrationServiceService {
 
   findPonudeByRekvizit(rekvizitId: number) {
     return this.http.get(this.url + "/ponuda/findPonudeByRekvizit/" + rekvizitId).map(res => res.json());
+  }
+
+  istorijaPoseta() {
+    return this.http.get(this.url + "/rezervacija/istorijaPoseta").map(res=>res.json());
+  }
+
+  aktivneRezervacije() {
+    return this.http.get(this.url + "/rezervacija/aktivneRezervacije").map(res=>res.json());
+  }
+
+  otkaziRezervaciju(rezervacija) {
+    return this.http.post(this.url + "/rezervacija/otkazi", rezervacija).map(res=>res.json());
   }
 
 }
