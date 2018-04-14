@@ -32,25 +32,24 @@ export class RegistrationAdminComponent implements OnInit {
   registration(){
     let value = this.registrationForm.value;
      console.log(value);
-    this.registrationService.registration(value)
-           .subscribe(data=>{
-               console.log(data.ime);
-               console.log("Ispisi nesto");
-           })
+    this.registrationService.registration(value).subscribe(data=>{
+      console.log(data.ime);
+      console.log("Ispisi nesto");
+    })
 
   }
 
 
   izaberiTip(){
-    if(this.registrationForm.controls['tipKorisnika'].value === 'adminPiB'){
-      this.tipKorisnika = "adminPiB";
+    if(this.registrationForm.controls['tipKorisnika'].value === 'adminBP'){
+      this.tipKorisnika = "adminBP";
     }else{
       this.tipKorisnika = "adminFAN";
     }
   }
 
   administratori = [
-    {value: 'adminPiB', viewValue: 'administrator pozorista/bioskopa'},
+    {value: 'adminBP', viewValue: 'administrator pozorista/bioskopa'},
     {value: 'adminFAN', viewValue: 'administrator fan zone'}
   ];
 

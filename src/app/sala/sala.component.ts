@@ -19,8 +19,10 @@ export class SalaComponent implements OnInit {
   teatarID: number;
   salaID: number;
   segments: any;
+  aktivanKorak: number;
 
   ngOnInit() {
+    this.aktivanKorak = 1;
     this.counter = 0;
     this.draw = SVG('canvas').size(400, 400);
     const border = this.draw.rect(0, 0);
@@ -98,6 +100,7 @@ export class SalaComponent implements OnInit {
   saveSegment() {
     this.registrationService.saveSegment(this.segmentForm.value, this.salaID).subscribe(data=>{
       console.log(data);
+      alert('Segment ' + data.naziv + ' uspesno sacuvan!');
       this.registrationService.getAllSalaSegments(data.salaId).subscribe(data=>{
         this.segments = [];
         this.segments = data;

@@ -20,6 +20,8 @@ import { AllTheatersComponent } from './all-theaters/all-theaters.component';
 import { ActiveReservationsComponent } from './active-reservations/active-reservations.component';
 import { HistoryComponent } from './history/history.component';
 import { PrijateljiComponent } from './prijatelji/prijatelji.component';
+import { FirstForFanAdminComponent } from './first-for-fan-admin/first-for-fan-admin.component';
+import { FirstForBpadminComponent } from './first-for-bpadmin/first-for-bpadmin.component';
 
 
 const routes : Routes = [
@@ -42,7 +44,9 @@ const routes : Routes = [
     { path: 'pozorista', component:AllTheatersComponent },
     { path: 'aktivneRezervacije', component:ActiveReservationsComponent },
     { path: 'istorija', component:HistoryComponent },
-    { path: 'prijatelji', component:PrijateljiComponent }
+    { path: 'prijatelji', component:PrijateljiComponent },
+    { path: 'adminFAN', component:FirstForFanAdminComponent },
+    { path: 'adminBP', component:FirstForBpadminComponent }
 
 
 ];

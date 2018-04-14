@@ -27,28 +27,40 @@ export class LoginComponent implements OnInit {
 
   login(){
     let email = this.loginForm.value.email;
-    this.registrationService.login(email)
-    .subscribe(data=>{
+    this.registrationService.login(email).subscribe(data=>{
       
       
-      if(data.lozinka === this.loginForm.value.lozinka && data.potvrdjenMail == true){
-        this.registrationService.setActiveUser(data.id).subscribe(data=>{
-         console.log(data);
-      })
-        this.router.navigate(['/homePageForRUser']);
-        
-      }else{
-        console.log("Pogresno")
-      }
+      if(data.lozinka === this.loginForm.value.lozinka){
 
-      if(data.tipKorisnika === "sistemAdministrator"){
+       if (data.tipKorisnika === "registrovanKorisnik") {
+          if (data.potvrdjenMail == true) {
+            this.registrationService.setActiveUser(data.id).subscribe(data=>{
+              console.log(data);
+             })
+             this.router.navigate(['/homePageForRUser']);
+          }else {
+            alert("Prvo potvrdite Vas mejl pa pokusajte ponovo!");
+          }
+       }else if(data.tipKorisnika === "sistemAdministrator"){
         console.log("Ja sam sistem administrator");
         this.router.navigate(['/firstForAdmin']);
         
+        }else if(data.tipKorisnika === "adminFAN"){
+          console.log("Ja sam administrator fan zone");
+          this.router.navigate(['/adminFAN']);
+        }else if(data.tipKorisnika === "adminBP"){
+          console.log("Ja sam administrator pozorista/bioskopa zone");
+          this.router.navigate(['/adminBP']);
+        }
+        else{
+          console.log("Ja sam obican korisnik");
+        }   
       }else{
-        console.log("Ja sam obican covek");
+        alert("Neispravan mejl ili sifra");
       }
-  })
+    })
+
+
   }
 
   

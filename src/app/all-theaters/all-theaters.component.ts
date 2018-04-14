@@ -69,4 +69,8 @@ export class AllTheatersComponent implements OnInit {
     })
   }
 
+  konfiguracija(teatarId) {
+    this.router.navigate(['/sala', teatarId]);
+  }
+
 }

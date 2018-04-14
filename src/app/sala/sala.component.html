@@ -1,37 +1,42 @@
-<p>
-  sala works!
-</p>
-<button mat-button color="primary" (click)="novoMesto(1, '#0ff')">Novo mesto</button>
-<button mat-button color="primary" (click)="novoMesto(2, '#f00')">Novo mesto</button>
+<div [hidden]="aktivanKorak!==1">
+  <h2>Dodaj salu</h2>
+  <form class="example-form" [formGroup]="salaForm" (ngSubmit)="saveSala(); aktivanKorak=2">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Naziv" formControlName="naziv"> 
+      </mat-form-field> <br>
+    
+      <button mat-button type="submit" [disabled] = "!salaForm.valid" color="primary" >Sacuvaj salu</button>
+      
+  </form>
+</div>
 
-<mat-select placeholder="Dodaj mesto u odredjeni segment">
-  <mat-option *ngFor="let segment of segments" (click)="novoMesto(segment.id, segment.boja)" >{{segment.naziv}}</mat-option>
-</mat-select>
-
-<div id="canvas"></div>
-
-<form class="example-form" [formGroup]="salaForm" (ngSubmit)="saveSala()">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Naziv" formControlName="naziv"> 
-  </mat-form-field> <br>
-
-  <button mat-button type="submit" color="primary" >Sacuvaj salu</button>
+<div [hidden]="aktivanKorak!==2">
+  <h2>Dodaj segment</h2>
+  <form class="example-form" [formGroup]="segmentForm" (ngSubmit)="saveSegment()">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Naziv" formControlName="naziv"> 
+      </mat-form-field> <br>
+    
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Boja" formControlName="boja"> 
+      </mat-form-field> <br>
+    
+      <button mat-button type="submit" color="primary" >Sacuvaj segment</button>
   
-</form>
+  </form>
+  <button mat-button (click)="aktivanKorak=3" color="primary" >Zavrsi dodavanje segmenata</button>
+</div>
 
+<div [hidden]="aktivanKorak!==3">
+  <h2>Konfigurisi raspored sedenja</h2>
+  <mat-select placeholder="Dodaj mesto u odredjeni segment">
+    <mat-option *ngFor="let segment of segments" (click)="novoMesto(segment.id, segment.boja)" >{{segment.naziv}}</mat-option>
+  </mat-select>
 
-<form class="example-form" [formGroup]="segmentForm" (ngSubmit)="saveSegment()">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Naziv" formControlName="naziv"> 
-  </mat-form-field> <br>
+  <div id="canvas"></div>
+  <button mat-button routerLink="/adminBP" color="warn" >Sacuvaj konfiguraciju sedenja</button>
+</div>
 
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Boja" formControlName="boja"> 
-  </mat-form-field> <br>
-
-  <button mat-button type="submit" color="primary" >Sacuvaj segment</button>
-  
-</form>
 
 
 

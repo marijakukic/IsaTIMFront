@@ -66,6 +66,8 @@ import { AllTheatersComponent } from './all-theaters/all-theaters.component';
 import { ActiveReservationsComponent } from './active-reservations/active-reservations.component';
 import { HistoryComponent } from './history/history.component';
 import { PrijateljiComponent } from './prijatelji/prijatelji.component';
+import { FirstForFanAdminComponent } from './first-for-fan-admin/first-for-fan-admin.component';
+import { FirstForBpadminComponent } from './first-for-bpadmin/first-for-bpadmin.component';
   
 
 @NgModule({
@@ -89,7 +91,9 @@ import { PrijateljiComponent } from './prijatelji/prijatelji.component';
     AllTheatersComponent,
     ActiveReservationsComponent,
     HistoryComponent,
-    PrijateljiComponent
+    PrijateljiComponent,
+    FirstForFanAdminComponent,
+    FirstForBpadminComponent
   ],
   imports: [
     FormsModule,
