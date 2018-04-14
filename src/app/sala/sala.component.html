@@ -21,7 +21,7 @@
         <input matInput placeholder="Boja" formControlName="boja"> 
       </mat-form-field> <br>
     
-      <button mat-button type="submit" color="primary" >Sacuvaj segment</button>
+      <button mat-button type="submit" [disabled] = "!segmentForm.valid" color="primary" >Sacuvaj segment</button>
   
   </form>
   <button mat-button (click)="aktivanKorak=3" color="primary" >Zavrsi dodavanje segmenata</button>

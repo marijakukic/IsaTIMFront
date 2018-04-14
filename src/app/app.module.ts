@@ -68,6 +68,12 @@ import { HistoryComponent } from './history/history.component';
 import { PrijateljiComponent } from './prijatelji/prijatelji.component';
 import { FirstForFanAdminComponent } from './first-for-fan-admin/first-for-fan-admin.component';
 import { FirstForBpadminComponent } from './first-for-bpadmin/first-for-bpadmin.component';
+import {FilmComponent} from './film/film.component';
+import { SviFilmoviComponent } from './svi-filmovi/svi-filmovi.component';
+import { ProjekcijaComponent } from './projekcija/projekcija.component';
+import { SveProjekcijeComponent } from './sve-projekcije/sve-projekcije.component';
+import { IzmeniFilmComponent } from './izmeni-film/izmeni-film.component';
+import { IzmeniProjekcijuComponent } from './izmeni-projekciju/izmeni-projekciju.component';
   
 
 @NgModule({
@@ -93,7 +99,13 @@ import { FirstForBpadminComponent } from './first-for-bpadmin/first-for-bpadmin.
     HistoryComponent,
     PrijateljiComponent,
     FirstForFanAdminComponent,
-    FirstForBpadminComponent
+    FirstForBpadminComponent,
+    FilmComponent,
+    SviFilmoviComponent,
+    ProjekcijaComponent,
+    SveProjekcijeComponent,
+    IzmeniFilmComponent,
+    IzmeniProjekcijuComponent
   ],
   imports: [
     FormsModule,

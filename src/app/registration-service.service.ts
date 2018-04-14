@@ -158,4 +158,17 @@ export class RegistrationServiceService {
     return this.http.post(this.url + "/rezervacija/otkazi", rezervacija).map(res=>res.json());
   }
 
+  saveFilm(film: any, id: number) {
+    film.id = id;
+    return this.http.post(this.url + "/film/save", film).map(res=>res.json());
+  }
+
+  getFilm(id) {
+    return this.http.get(this.url + "/film/get/" + id).map(res=>res.json());
+  }
+
+  sviFilmovi() {
+    return this.http.get(this.url + "/film/get/svi").map(res=>res.json());
+  }
+
 }

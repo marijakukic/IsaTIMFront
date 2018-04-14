@@ -30,8 +30,13 @@
         <ng-container matColumnDef="rezervacija">
           <mat-header-cell *matHeaderCellDef> Rezervacija </mat-header-cell>
           <mat-cell *matCellDef="let pozoriste"> 
-            <button mat-button color="primary" (click)="rezervisi(pozoriste.id)">Rezervisi</button>
-            <button mat-button color="warn" (click)="posjetiFanZonu(pozoriste.id)">Fan Zona</button>
+              <div *ngIf="korisnik.tipKorisnika==='registrovanKorisnik'">
+                  <button mat-button color="primary" (click)="rezervisi(pozoriste.id)">Rezervisi</button>
+                  <button mat-button color="warn" (click)="posjetiFanZonu(pozoriste.id)">Fan Zona</button>
+                </div>
+                <div *ngIf="korisnik.tipKorisnika==='adminBP'">
+                  <button mat-button color="warn" (click)="konfiguracija(pozoriste.id)">Konfiguracija</button>
+                </div>
           </mat-cell>
         </ng-container>
     

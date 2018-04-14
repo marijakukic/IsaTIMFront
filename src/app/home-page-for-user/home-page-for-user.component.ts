@@ -82,7 +82,6 @@ export class HomePageForUserComponent implements OnInit {
     this.registrationService.odjaviSe().subscribe(data=>{
       this.router.navigate(['/']);
     })
-    
   }
 
 

@@ -22,6 +22,12 @@ import { HistoryComponent } from './history/history.component';
 import { PrijateljiComponent } from './prijatelji/prijatelji.component';
 import { FirstForFanAdminComponent } from './first-for-fan-admin/first-for-fan-admin.component';
 import { FirstForBpadminComponent } from './first-for-bpadmin/first-for-bpadmin.component';
+import { FilmComponent } from './film/film.component';
+import { IzmeniFilmComponent } from './izmeni-film/izmeni-film.component';
+import { SviFilmoviComponent } from './svi-filmovi/svi-filmovi.component';
+import { ProjekcijaComponent } from './projekcija/projekcija.component';
+import { IzmeniProjekcijuComponent } from './izmeni-projekciju/izmeni-projekciju.component';
+import { SveProjekcijeComponent } from './sve-projekcije/sve-projekcije.component';
 
 
 const routes : Routes = [
@@ -46,7 +52,13 @@ const routes : Routes = [
     { path: 'istorija', component:HistoryComponent },
     { path: 'prijatelji', component:PrijateljiComponent },
     { path: 'adminFAN', component:FirstForFanAdminComponent },
-    { path: 'adminBP', component:FirstForBpadminComponent }
+    { path: 'adminBP', component:FirstForBpadminComponent },
+    { path: 'film', component:FilmComponent },
+    { path: 'izmeniFilm/:filmID', component:IzmeniFilmComponent },
+    { path: 'sviFilmovi', component:SviFilmoviComponent },
+    { path: 'projekcija/:filmID', component:ProjekcijaComponent },
+    { path: 'izmeniProjekciju/:projekcijaID', component:IzmeniProjekcijuComponent },
+    { path: 'sveProjekcije', component:SveProjekcijeComponent }
 
 
 ];
@@ -66,5 +78,7 @@ export const routingComponents = [RegistrationComponent, LoginComponent, FirstFo
                                   SettingRuserComponent, SalaComponent, ReservationComponent,
                                   SeatReservationComponent, FanzonaComponent, PonudeComponent,
                                   AllCinemasComponent, AllTheatersComponent, ActiveReservationsComponent,
-                                  HistoryComponent, PrijateljiComponent
+                                  HistoryComponent, PrijateljiComponent, FilmComponent,
+                                  IzmeniFilmComponent, SviFilmoviComponent,
+                                  ProjekcijaComponent, IzmeniProjekcijuComponent, SveProjekcijeComponent
                                 ]

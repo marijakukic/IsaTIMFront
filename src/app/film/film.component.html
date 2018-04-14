@@ -1,0 +1,74 @@
+<form [formGroup]="filmForm" (submit)="save()">
+
+    <div class="form-group">
+      <mat-form-field>
+        <input
+                matInput
+                placeholder="Naziv"
+                class="form-control"
+                formControlName="naziv" >
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field>
+          <input
+                  matInput
+                  placeholder="Kratak opis"
+                  class="form-control"
+                  formControlName="kratakOpis" >
+        </mat-form-field>
+      </div> 
+
+      <div class="form-group">
+          <mat-form-field>
+            <input
+                    matInput
+                    placeholder="Zanr"
+                    class="form-control"
+                    formControlName="zanr" >
+          </mat-form-field>
+        </div> 
+
+        <div class="form-group">
+            <mat-form-field>
+              <input
+                      matInput
+                      placeholder="Spisak glumaca"
+                      class="form-control"
+                      formControlName="spisakGlumaca" >
+            </mat-form-field>
+          </div> 
+
+          <div class="form-group">
+              <mat-form-field>
+                <input
+                        matInput
+                        placeholder="Ime reditelja"
+                        class="form-control"
+                        formControlName="imeReditelja" >
+              </mat-form-field>
+            </div> 
+
+            <div class="form-group">
+                <mat-form-field>
+                  <input
+                          matInput
+                          placeholder="Trajanje"
+                          class="form-control"
+                          formControlName="trajanje" >
+                </mat-form-field>
+              </div> 
+
+              <div class="form-group">
+                <mat-form-field>
+                  <input
+                          matInput
+                          placeholder="Poster"
+                          class="form-control"
+                          formControlName="poster" >
+                </mat-form-field>
+              </div> 
+
+    <button mat-button type="submit" [disabled] = "!filmForm.valid">Sacuvaj</button>
+</form>

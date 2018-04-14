@@ -1,2 +1,10 @@
 <button mat-button routerLink='/pozorista'>Pozorista</button>
 <button mat-button routerLink='/bioskopi'>Bioskopi</button>
+<button mat-button [matMenuTriggerFor]="film">Film</button>
+<button mat-button routerLink='/sveProjekcije'>Prikaz svih projekcija</button>
+<button mat-button (click)="odjaviSe()"> Odjava</button>
+
+<mat-menu #film="matMenu">
+    <button mat-menu-item routerLink='/film'>Dodaj film</button>
+    <button mat-menu-item routerLink='/sviFilmovi'>Prikaz svih filmova</button>
+</mat-menu>

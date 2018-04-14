@@ -30,8 +30,7 @@ export class AllCinemasComponent implements OnInit {
       this.korisnik = data;
     })
 
-    this.teatarService.listaBioskopa()
-      .subscribe(data=>{
+    this.teatarService.listaBioskopa().subscribe(data=>{
         this.bioskop = data;
         console.log(this.bioskop);
         console.log(data.promotivniOpis) 

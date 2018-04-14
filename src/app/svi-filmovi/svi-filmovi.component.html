@@ -1,0 +1,48 @@
+<h2> Svi filmovi </h2>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </mat-header-cell>
+      <mat-cell *matCellDef="let film"> {{film.naziv}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="zanr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Zanr </mat-header-cell>
+      <mat-cell *matCellDef="let film"> {{film.zanr}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="trajanje">
+      <mat-header-cell *matHeaderCellDef> Trajanje </mat-header-cell>
+      <mat-cell *matCellDef="let film"> {{film.trajanje}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="imeReditelja">
+      <mat-header-cell *matHeaderCellDef> Ime reditelja </mat-header-cell>
+      <mat-cell *matCellDef="let film"> {{film.imeReditelja}} </mat-cell>
+    </ng-container>
+
+      <ng-container matColumnDef="spisakGlumaca">
+        <mat-header-cell *matHeaderCellDef> Spisak glumaca </mat-header-cell>
+        <mat-cell *matCellDef="let film"> {{film.spisakGlumaca}} </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="operacije">
+      <mat-header-cell *matHeaderCellDef> Operacije </mat-header-cell>
+      <mat-cell *matCellDef="let film">
+        <button mat-button color="primary" (click)="izmeniFilm(film.id)">Izmeni film</button>
+        <button mat-button color="primary" (click)="dodajProjekciju(film.id)">Dodaj projekciju</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

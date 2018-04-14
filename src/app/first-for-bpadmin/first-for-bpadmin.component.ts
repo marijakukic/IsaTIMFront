@@ -22,4 +22,10 @@ export class FirstForBpadminComponent implements OnInit {
     })
   }
 
+  odjaviSe() {
+    this.registrationService.odjaviSe().subscribe(data=>{
+      this.router.navigate(['/']);
+    })
+  }
+
 }
