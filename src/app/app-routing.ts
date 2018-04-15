@@ -28,6 +28,7 @@ import { SviFilmoviComponent } from './svi-filmovi/svi-filmovi.component';
 import { ProjekcijaComponent } from './projekcija/projekcija.component';
 import { IzmeniProjekcijuComponent } from './izmeni-projekciju/izmeni-projekciju.component';
 import { SveProjekcijeComponent } from './sve-projekcije/sve-projekcije.component';
+import { IzmeniTeatarComponent } from './izmeni-teatar/izmeni-teatar.component';
 
 
 const routes : Routes = [
@@ -58,7 +59,8 @@ const routes : Routes = [
     { path: 'sviFilmovi', component:SviFilmoviComponent },
     { path: 'projekcija/:filmID', component:ProjekcijaComponent },
     { path: 'izmeniProjekciju/:projekcijaID', component:IzmeniProjekcijuComponent },
-    { path: 'sveProjekcije', component:SveProjekcijeComponent }
+    { path: 'sveProjekcije/:teatarID', component:SveProjekcijeComponent },
+    { path: 'izmeniTeatar/:teatarID', component:IzmeniTeatarComponent }
 
 
 ];
@@ -80,5 +82,6 @@ export const routingComponents = [RegistrationComponent, LoginComponent, FirstFo
                                   AllCinemasComponent, AllTheatersComponent, ActiveReservationsComponent,
                                   HistoryComponent, PrijateljiComponent, FilmComponent,
                                   IzmeniFilmComponent, SviFilmoviComponent,
-                                  ProjekcijaComponent, IzmeniProjekcijuComponent, SveProjekcijeComponent
+                                  ProjekcijaComponent, IzmeniProjekcijuComponent, SveProjekcijeComponent,
+                                  IzmeniTeatarComponent
                                 ]

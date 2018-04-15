@@ -3,6 +3,11 @@
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
 
+    <ng-container matColumnDef="tip">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Tip </mat-header-cell>
+      <mat-cell *matCellDef="let film"> {{film.tip}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="naziv">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </mat-header-cell>
       <mat-cell *matCellDef="let film"> {{film.naziv}} </mat-cell>

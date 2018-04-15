@@ -73,4 +73,12 @@ export class AllTheatersComponent implements OnInit {
     this.router.navigate(['/sala', teatarId]);
   }
 
+  izmena(teatarId) {
+    this.router.navigate(['/izmeniTeatar', teatarId]);
+  }
+
+  aktivneProjekcije(teatarId) {
+    this.router.navigate(['/sveProjekcije', teatarId]);
+  }
+
 }

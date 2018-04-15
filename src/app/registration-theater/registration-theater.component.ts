@@ -26,7 +26,7 @@ export class RegistrationTheaterComponent implements OnInit {
   registrationTeatar(){
     let value = this.registrationForm.value;
     console.log(value);
-    this.registrationService.registrationTeatar(value)
+    this.registrationService.registrationTeatar(value, null)
            .subscribe(data=>{
                console.log(data.naziv);
                console.log("Ispisi nesto");

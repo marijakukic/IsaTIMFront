@@ -1,3 +1,67 @@
-<p>
-  izmeni-projekciju works!
-</p>
+<form [formGroup]="projekcijaForm" (submit)="save()">
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              placeholder="Datum yyyyMMdd"
+              class="form-control"
+              formControlName="datum" >
+    </mat-form-field>
+  </div>
+
+  <button mat-button type="submit" [disabled] = "!projekcijaForm.valid">Sacuvaj</button>
+</form>
+
+<div *ngFor="let termin of projekcija.termini">
+  <p>
+    {{termin.salaNaziv}} {{termin.vreme}} {{termin.cena}}din
+    <button mat-button color="primary" (click)="izmeniTermin(termin)">Izmeni</button>
+    <button mat-button color="warn" (click)="obrisiTermin(termin)">Obrisi</button>
+  </p>
+</div>
+
+<br>
+<br>
+<br>
+
+<form [formGroup]="terminForm" (submit) = "saveTermin()">
+      
+  <br>
+  <br>
+
+  <div class="form-group">
+    <mat-select placeholder="Izaberite salu" formControlName="salaId">
+      <mat-option *ngFor="let sala of sale" [value]="sala.id">
+        {{ sala.naziv }}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              placeholder="Vreme"
+              class="form-control"
+              formControlName="vreme" >
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Cena"
+              class="form-control"
+              formControlName="cena" >
+    </mat-form-field>
+  </div>
+
+  <button mat-button color="primary" type="submit" [disabled] = "!terminForm.valid">Nastavi</button>
+
+</form>

@@ -1,0 +1,35 @@
+<form [formGroup]="teatarForm" (submit)="save()">
+
+    <div class="form-group">
+      <mat-form-field>
+        <input
+                matInput
+                placeholder="Naziv"
+                class="form-control"
+                formControlName="naziv" >
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field>
+          <input
+                  matInput
+                  placeholder="Adresa"
+                  class="form-control"
+                  formControlName="adresa" >
+        </mat-form-field>
+      </div> 
+
+    <div class="form-group">
+        <mat-form-field>
+          <input
+                  matInput
+                  placeholder="Promotivni opis"
+                  class="form-control"
+                  formControlName="promotivniOpis" >
+        </mat-form-field>
+      </div> 
+
+        
+    <button mat-button type="submit" [disabled] = "!teatarForm.valid">Sacuvaj</button>
+</form>

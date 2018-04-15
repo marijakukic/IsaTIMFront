@@ -69,6 +69,18 @@
                           formControlName="poster" >
                 </mat-form-field>
               </div> 
+              <br>
+              <div class="form-group">
+                <mat-select placeholder="Tip" formControlName="tip">
+                  <mat-option *ngFor="let tip of tipovi" [value]="tip.value">
+                    {{ tip.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </div>
+             <br>
+             <br>
+
+
 
     <button mat-button type="submit" [disabled] = "!filmForm.valid">Sacuvaj</button>
 </form>

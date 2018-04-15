@@ -12,7 +12,7 @@ export class SviFilmoviComponent implements OnInit {
 
   korisnik: any;
 
-  displayedColumns = ['naziv', 'zanr', 'trajanje', 'imeReditelja', 'spisakGlumaca', 'operacije'];
+  displayedColumns = ['tip', 'naziv', 'zanr', 'trajanje', 'imeReditelja', 'spisakGlumaca', 'operacije'];
   dataSource = new MatTableDataSource<any>();
   filmovi:any;
 
@@ -32,6 +32,7 @@ export class SviFilmoviComponent implements OnInit {
 
         this.dataSource = new MatTableDataSource<any>(this.filmovi);
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
        
     })
 

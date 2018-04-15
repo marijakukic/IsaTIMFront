@@ -29,7 +29,8 @@ export class IzmeniFilmComponent implements OnInit {
       spisakGlumaca: new FormControl('',[Validators.required]),
       imeReditelja: new FormControl('',[Validators.required]),
       trajanje: new FormControl('',[Validators.required]),
-      poster: new FormControl('',[Validators.required])
+      poster: new FormControl('',[Validators.required]),
+      tip: new FormControl('',[Validators.required])
     })
 
 
@@ -43,7 +44,8 @@ export class IzmeniFilmComponent implements OnInit {
         spisakGlumaca: new FormControl(this.film.spisakGlumaca,[Validators.required]),
         imeReditelja: new FormControl(this.film.imeReditelja,[Validators.required]),
         trajanje: new FormControl(this.film.trajanje,[Validators.required]),
-        poster: new FormControl(this.film.poster,[Validators.required])
+        poster: new FormControl(this.film.poster,[Validators.required]),
+        tip: new FormControl(this.film.tip,[Validators.required])
       })
     })
     

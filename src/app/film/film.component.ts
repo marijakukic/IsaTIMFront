@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class FilmComponent implements OnInit {
 
   filmForm: FormGroup;
+  selectedValue: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private registrationService: RegistrationServiceService) { }
 
@@ -22,7 +23,8 @@ export class FilmComponent implements OnInit {
       spisakGlumaca: new FormControl('',[Validators.required]),
       imeReditelja: new FormControl('',[Validators.required]),
       trajanje: new FormControl('',[Validators.required]),
-      poster: new FormControl('',[Validators.required])
+      poster: new FormControl('',[Validators.required]),
+      tip: new FormControl('',[Validators.required])
     })
 
   }
@@ -32,5 +34,10 @@ export class FilmComponent implements OnInit {
       this.router.navigate(['/sviFilmovi']);
     })
   }
+
+  tipovi = [
+    {value: 'film', viewValue: 'Film'},
+    {value: 'predstava', viewValue: 'Predstava'}
+  ];
 
 }

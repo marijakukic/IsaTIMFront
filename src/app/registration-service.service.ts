@@ -34,11 +34,6 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/getActiveUser").map(res=>res.json());
   }
 
-  registrationTeatar(teatar:any){
-    console.log("Ovo je service front");
-    return this.http.post(this.url + "/registrationTeatar", teatar).map(res=>res.json());
-  }
-
   getUserDetails(userId: any){
     return this.http.get(this.url + "/getUserDetails/" + userId).map(res=>res.json());
   }
@@ -71,6 +66,10 @@ export class RegistrationServiceService {
 
   getAllSalaSegments(salaId: number){
     return this.http.get(this.url + "/segment/getAllSalaSegments/" + salaId).map(res => res.json());
+  }
+
+  getSaleFromTeatar(teatarId) {
+    return this.http.get(this.url + "/teatar/getSale/" + teatarId).map(res => res.json());
   }
 
   getAllFreeSeats(teatarId: number, terminId: number){
@@ -169,6 +168,49 @@ export class RegistrationServiceService {
 
   sviFilmovi() {
     return this.http.get(this.url + "/film/get/svi").map(res=>res.json());
+  }
+
+  registrationTeatar(teatar:any, teatarID){
+    teatar.id = teatarID;
+    return this.http.post(this.url + "/registrationTeatar", teatar).map(res=>res.json());
+  }
+
+  getTeatar(id) {
+    return this.http.get(this.url + "/teatar/get/" + id).map(res=>res.json());
+  }
+
+  editProjekcija(projekcija:any, datum) {
+    projekcija.datum = datum;
+    return this.http.post(this.url + "/projekcija/save", projekcija).map(res=>res.json());
+  }
+
+  getProjekcija(projekcijaId) {
+    return this.http.get(this.url + "/projekcija/get/" + projekcijaId).map(res=>res.json());
+  }
+
+  saveProjekcija(projekcija:any, film: any){
+    projekcija.film = film;
+    return this.http.post(this.url + "/projekcija/save", projekcija).map(res=>res.json());
+  }
+
+  saveTermin(termin: any, projekcijaId: number) {
+    return this.http.post(this.url + "/termin/save/" + projekcijaId, termin).map(res=>res.json());
+  }
+
+  obrisiTermin(termin: any) {
+    return this.http.post(this.url + "/termin/obrisi", termin).map(res=>res.json());
+  }
+
+  listaAktivnihProjekcijaUTeatru(teatarId) {
+    return this.http.get(this.url + "/projekcija/aktivne/teatar/" + teatarId).map(res=>res.json());
+  }
+
+  obrisiProjekciju(projekcijaId) {
+    return this.http.post(this.url + "/projekcija/obrisi/" + projekcijaId, null).map(res=>res.json());
+  }
+
+  omogucenaIzmena(projekcijaId) {
+    return this.http.get(this.url + "/projekcija/izmena/omogucena/" + projekcijaId).map(res=>res.json());
   }
 
 }

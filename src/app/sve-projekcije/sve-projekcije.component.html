@@ -1,3 +1,40 @@
-<p>
-  sve-projekcije works!
-</p>
+<h2> Sve projekcije </h2>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv filma</mat-header-cell>
+      <mat-cell *matCellDef="let projekcija"> {{projekcija.film.naziv}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="zanr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Zanr </mat-header-cell>
+      <mat-cell *matCellDef="let projekcija"> {{projekcija.film.zanr}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="datum">
+      <mat-header-cell *matHeaderCellDef> Datum </mat-header-cell>
+      <mat-cell *matCellDef="let projekcija"> {{projekcija.datum}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="operacije">
+      <mat-header-cell *matHeaderCellDef> Operacije </mat-header-cell>
+      <mat-cell *matCellDef="let projekcija"> 
+  
+        <button mat-button color="primary" (click)="izmena(projekcija.id)">Izmena</button>
+        <button mat-button color="warn" (click)="obrisi(projekcija.id)">Obrisi</button>
+  
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>
