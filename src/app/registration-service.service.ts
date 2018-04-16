@@ -22,6 +22,10 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/login/"+ email).map(res=>res.json());
   }
 
+  izmeniLozinku(staraLozinka, novaLozinka) {
+    return this.http.post(this.url + "/korisnik/prvaPromenaLozinke/" + staraLozinka + "/" + novaLozinka, null).map(res=>res.json());
+  }
+
   odjaviSe() {
     return this.http.get(this.url + "/logout").map(res=>res.toString);
   }
@@ -114,6 +118,10 @@ export class RegistrationServiceService {
     return this.http.get(this.url + "/fanZona/getAllRekvizite/" + teatarId + "/" + stanje).map(res => res.json());
   }
 
+  getAllRekviziteZaOdobravanje(teatarId: number) {
+    return this.http.get(this.url + "/fanZona/getAllRekviziteZaOdobravanje/" + teatarId).map(res => res.json());
+  }
+
   getAllMojeRekvizite(teatarId: number, stanje: string) {
     return this.http.get(this.url + "/fanZona/getAllMojeRekvizite/" + teatarId + "/" + stanje).map(res => res.json());
   }
@@ -150,7 +158,22 @@ export class RegistrationServiceService {
     oglas.teatarId = teatarId;
     oglas.korisnikId = korisnikId;
     oglas.stanje = "polovan";
+    oglas.odobren = false;
+    return this.http.post(this.url + "/rekvizit/saveOglas", oglas).map(res=>res.json());
+  }
+
+  saveRekvizit(teatarId: number, oglas: any) {
+    oglas.teatarId = teatarId;
+    oglas.stanje = "nov";
     return this.http.post(this.url + "/rekvizit/saveRekvizit", oglas).map(res=>res.json());
+  }
+
+  ponistiRekvizit(polovanRekvizit) {
+    return this.http.post(this.url + "/rekvizit/ponisti", polovanRekvizit).map(res=>res.json());
+  }
+
+  odobriRekvizit(polovanRekvizit) {
+    return this.http.post(this.url + "/rekvizit/odobri", polovanRekvizit).map(res=>res.json());
   }
 
   findPonudeByRekvizit(rekvizitId: number) {
@@ -223,6 +246,14 @@ export class RegistrationServiceService {
 
   omogucenaIzmena(projekcijaId) {
     return this.http.get(this.url + "/projekcija/izmena/omogucena/" + projekcijaId).map(res=>res.json());
+  }
+
+  saveSkalaClanstva(skalaClanstva) {
+    return this.http.post(this.url + "/skala/save", skalaClanstva).map(res=>res.json());
+  }
+
+  getSkalaClanstva() {
+    return this.http.get(this.url + "/skala/get").map(res=>res.json());
   }
 
 }

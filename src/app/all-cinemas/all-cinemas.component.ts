@@ -85,4 +85,8 @@ export class AllCinemasComponent implements OnInit {
     this.router.navigate(['/sveProjekcije', teatarId]);
   }
 
+  fanZonaAdmin(teatarId) {
+    this.router.navigate(['/uredjivanjeFanzone', teatarId]);
+  }
+
 }

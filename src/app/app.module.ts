@@ -76,6 +76,9 @@ import { IzmeniFilmComponent } from './izmeni-film/izmeni-film.component';
 import { IzmeniProjekcijuComponent } from './izmeni-projekciju/izmeni-projekciju.component';
 import { IzmeniTeatarComponent } from './izmeni-teatar/izmeni-teatar.component';
 import { KarteSaPopustomComponent } from './karte-sa-popustom/karte-sa-popustom.component';
+import { IzmeniLozinkuComponent } from './izmeni-lozinku/izmeni-lozinku.component';
+import { SkalaClanstvaComponent } from './skala-clanstva/skala-clanstva.component';
+import { UredjivanjeFanzoneComponent } from './uredjivanje-fanzone/uredjivanje-fanzone.component';
   
 
 @NgModule({
@@ -109,7 +112,10 @@ import { KarteSaPopustomComponent } from './karte-sa-popustom/karte-sa-popustom.
     IzmeniFilmComponent,
     IzmeniProjekcijuComponent,
     IzmeniTeatarComponent,
-    KarteSaPopustomComponent
+    KarteSaPopustomComponent,
+    IzmeniLozinkuComponent,
+    SkalaClanstvaComponent,
+    UredjivanjeFanzoneComponent
   ],
   imports: [
     FormsModule,

@@ -1,0 +1,37 @@
+<form [formGroup]="izmeniLozinkuForm" (submit)="save()">
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="password"
+              placeholder="Stara lozinka"
+              class="form-control"
+              formControlName="staraLozinka" >
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="password"
+              placeholder="Nova lozinka"
+              class="form-control"
+              formControlName="novaLozinka1" >
+    </mat-form-field>
+  </div> 
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="password"
+              placeholder="Ponovljena nova lozinka"
+              class="form-control"
+              formControlName="novaLozinka2" >
+    </mat-form-field>
+  </div> 
+
+  <button mat-button type="submit" [disabled] = "!izmeniLozinkuForm.valid">Sacuvaj</button>
+</form>

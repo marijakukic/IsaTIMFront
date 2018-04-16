@@ -1,0 +1,153 @@
+<button mat-button color="warn" (click)="aktivnaStranica = 'sviNoviRekviziti'">Zvanicna prodavnica</button>
+<button mat-button color="warn" (click)="aktivnaStranica = 'napraviRekvizit'">Napravi rekvizit</button>
+<button mat-button color="warn" (click)="aktivnaStranica = 'odobravanjeOglasa'">Odobravanje oglasa</button>
+
+<div *ngIf="aktivnaStranica == 'sviNoviRekviziti'">
+  <mat-card *ngFor="let rekvizit of rekviziti">
+    <mat-card-header>
+      <mat-card-title>{{rekvizit.naziv}}</mat-card-title>
+      <mat-card-subtitle>{{rekvizit.opis}}</mat-card-subtitle>
+    </mat-card-header>
+    <img style="width:300px;height:300px;" mat-card-image src={{rekvizit.slika}} alt="slika">
+    <mat-card-content>
+      <div>
+        <p>
+          Cena: {{rekvizit.cena}}din
+          <button mat-button color="primary" (click)="aktivnaStranica = 'izmeniRekvizit'; izmeniRekvizit(rekvizit)">Izmeni</button>
+          <button mat-button color="primary" (click)="ponisti(rekvizit)">Obrisi</button>
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<div *ngIf="aktivnaStranica == 'odobravanjeOglasa'">
+  <mat-card *ngFor="let polovanRekvizit of rekvizitiZaOdobravanje">
+    <mat-card-header>
+      <mat-card-title>{{polovanRekvizit.naziv}}</mat-card-title>
+      <mat-card-subtitle>{{polovanRekvizit.opis}}</mat-card-subtitle>
+    </mat-card-header>
+    <img style="width:300px;height:300px;" mat-card-image src={{polovanRekvizit.slika}} alt="slika">
+    <mat-card-content>
+      <div>
+        <p>
+          Datum isteka: {{polovanRekvizit.datum}} <br>
+          Cena: {{polovanRekvizit.cena}}
+        </p>
+      </div>
+      <button mat-button color="primary" (click)="odobri(polovanRekvizit)">Odobri</button>
+      <button mat-button color="warn" (click)="ponisti(polovanRekvizit)">Ponisti</button>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<div *ngIf="aktivnaStranica == 'napraviRekvizit'">
+
+  <form [formGroup]="napraviRekvizitForm" (submit) = "saveRekvizit()">
+    
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Naziv"
+                class="form-control"
+                formControlName="naziv"
+                required> 
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <textarea type="text"
+                  matInput 
+                  placeholder="Opis" 
+                  class="form-control"
+                  formControlName="opis" 
+                  required>
+          </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Ubacite url slike"
+                class="form-control"
+                formControlName="slika"> 
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Cena"
+                class="form-control"
+                formControlName="cena"> 
+      </mat-form-field>
+    </div>
+  
+    <button mat-button color="primary" type="submit" [disabled] = "!napraviRekvizitForm.valid">Sacuvaj</button>
+  
+  </form>
+
+</div>
+
+
+
+<div *ngIf="aktivnaStranica == 'izmeniRekvizit'">
+
+  <form [formGroup]="izmeniRekvizitForm" (submit) = "saveIzmenjenRekvizit()">
+    
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Naziv"
+                class="form-control"
+                formControlName="naziv"
+                required> 
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <textarea type="text"
+                  matInput 
+                  placeholder="Opis" 
+                  class="form-control"
+                  formControlName="opis" 
+                  required>
+          </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Ubacite url slike"
+                class="form-control"
+                formControlName="slika"> 
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input  matInput 
+                type="text"
+                placeholder="Cena"
+                class="form-control"
+                formControlName="cena"> 
+      </mat-form-field>
+    </div>
+  
+    <button mat-button color="primary" type="submit" [disabled] = "!izmeniRekvizitForm.valid">Sacuvaj</button>
+  
+  </form>
+
+</div>

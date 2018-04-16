@@ -1,0 +1,87 @@
+<form [formGroup]="skalaClanstvaForm" (submit)="save()">
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Bodovi za posetu"
+              class="form-control"
+              formControlName="bodoviZaPosetu" >
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Granica bodova za bronzanog clana"
+              class="form-control"
+              formControlName="bronzani" >
+    </mat-form-field>
+  </div> 
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Bronzani clan popust"
+              class="form-control"
+              formControlName="bronzaniPopust" >
+    </mat-form-field>
+  </div> 
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Granica bodova za srebrnog clana"
+              class="form-control"
+              formControlName="srebrni" >
+    </mat-form-field>
+  </div>  
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Srebrni clan popust"
+              class="form-control"
+              formControlName="srebrniPopust" >
+    </mat-form-field>
+  </div> 
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Granica bodova za zlatnog clana"
+              class="form-control"
+              formControlName="zlatni" >
+    </mat-form-field>
+  </div>  
+
+  <div class="form-group">
+    <mat-form-field>
+      <input
+              matInput
+              type="number"
+              min="0"
+              placeholder="Srebrni clan popust"
+              class="form-control"
+              formControlName="zlatniPopust" >
+    </mat-form-field>
+  </div>
+  <button mat-button type="submit" [disabled] = "!skalaClanstvaForm.valid">Sacuvaj</button>
+</form>

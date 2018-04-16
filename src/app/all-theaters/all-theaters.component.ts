@@ -85,4 +85,8 @@ export class AllTheatersComponent implements OnInit {
     this.router.navigate(['/karteSaPopustom', teatarId]);
   }
 
+  fanZonaAdmin(teatarId) {
+    this.router.navigate(['/uredjivanjeFanzone', teatarId]);
+  }
+
 }
