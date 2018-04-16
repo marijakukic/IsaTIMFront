@@ -12,6 +12,8 @@ export class IzmeniLozinkuComponent implements OnInit {
 
   izmeniLozinkuForm: FormGroup;
 
+  korisnik: any;
+
   constructor(private router: Router, private route: ActivatedRoute, private registrationService: RegistrationServiceService) { }
 
   ngOnInit() {
@@ -21,6 +23,10 @@ export class IzmeniLozinkuComponent implements OnInit {
       novaLozinka1: new FormControl('',[Validators.required]),
       novaLozinka2: new FormControl('',[Validators.required])
     })
+
+    this.registrationService.getActiveUser().subscribe(data=>{
+      this.korisnik = data;
+    })
     
   }
 
@@ -28,6 +34,12 @@ export class IzmeniLozinkuComponent implements OnInit {
     this.registrationService.izmeniLozinku(this.izmeniLozinkuForm.value.staraLozinka, this.izmeniLozinkuForm.value.novaLozinka1).subscribe(data=>{
       if (data === 1) {
         alert("Uspesno izmenjena lozinka!");
+        if (this.korisnik.tipKorisnika === 'adminFAN') {
+          this.router.navigate(['/adminFAN']);
+        }
+        else if (this.korisnik.tipKorisnika === 'adminBP') {
+          this.router.navigate(['/adminBP']);
+        }
       }
       else {
         alert("Doslo je do greske! Pokusajte ponovo!");

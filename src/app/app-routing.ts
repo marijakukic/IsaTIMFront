@@ -32,6 +32,7 @@ import { IzmeniTeatarComponent } from './izmeni-teatar/izmeni-teatar.component';
 import { KarteSaPopustomComponent } from './karte-sa-popustom/karte-sa-popustom.component';
 import { UredjivanjeFanzoneComponent } from './uredjivanje-fanzone/uredjivanje-fanzone.component';
 import { SkalaClanstvaComponent } from './skala-clanstva/skala-clanstva.component';
+import { IzmeniLozinkuComponent } from './izmeni-lozinku/izmeni-lozinku.component';
 
 
 const routes : Routes = [
@@ -66,7 +67,8 @@ const routes : Routes = [
     { path: 'izmeniTeatar/:teatarID', component:IzmeniTeatarComponent },
     { path: 'karteSaPopustom/:teatarID', component:KarteSaPopustomComponent },
     { path: 'uredjivanjeFanzone/:teatarID', component:UredjivanjeFanzoneComponent },
-    { path: 'skalaClanstva', component:SkalaClanstvaComponent }
+    { path: 'skalaClanstva', component:SkalaClanstvaComponent },
+    { path: 'izmeniLozinku', component:IzmeniLozinkuComponent }
 
 ];
 
@@ -89,5 +91,5 @@ export const routingComponents = [RegistrationComponent, LoginComponent, FirstFo
                                   IzmeniFilmComponent, SviFilmoviComponent,
                                   ProjekcijaComponent, IzmeniProjekcijuComponent, SveProjekcijeComponent,
                                   IzmeniTeatarComponent, KarteSaPopustomComponent, UredjivanjeFanzoneComponent,
-                                  SkalaClanstvaComponent
+                                  SkalaClanstvaComponent, IzmeniLozinkuComponent
                                 ]

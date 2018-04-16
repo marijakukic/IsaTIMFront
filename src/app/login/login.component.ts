@@ -46,11 +46,19 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/firstForAdmin']);
         
         }else if(data.tipKorisnika === "adminFAN"){
-          console.log("Ja sam administrator fan zone");
-          this.router.navigate(['/adminFAN']);
+          if (data.promenjenaLozinka === false) {
+            this.router.navigate(['/izmeniLozinku']);
+          }
+          else {
+            this.router.navigate(['/adminFAN']);
+          }
         }else if(data.tipKorisnika === "adminBP"){
-          console.log("Ja sam administrator pozorista/bioskopa zone");
-          this.router.navigate(['/adminBP']);
+          if (data.promenjenaLozinka === false) {
+            this.router.navigate(['/izmeniLozinku']);
+          }
+          else{
+            this.router.navigate(['/adminBP']);
+          }
         }
         else{
           console.log("Ja sam obican korisnik");

@@ -58,7 +58,7 @@
         <ng-container matColumnDef="operacija">
           <mat-header-cell *matHeaderCellDef> Operacija </mat-header-cell>
           <mat-cell *matCellDef="let prijatelj"> 
-            <button mat-button color="primary" *ngIf="prijatelj.prijatelji==false && !prijatelj.zahtevPoslao==korisnikId" (click)="prihvatiZahtev(true, prijatelj.receiver.id)">Prihvati zahtev</button>
+            <button mat-button color="primary" *ngIf="prijatelj.prijatelji===false && prijatelj.zahtevPoslao!==korisnikId" (click)="prihvatiZahtev(true, prijatelj.receiver.id)">Prihvati zahtev</button>
             <button mat-button color="primary" *ngIf="prijatelj.prijatelji==false" (click)="prihvatiZahtev(false, prijatelj.receiver.id)">Obrisi zahtev</button>
             <button mat-button color="primary" *ngIf="prijatelj.prijatelji==true" (click)="obrisiPrijatelja(false, prijatelj.receiver.id)">Obrisi prijatelja</button>
           </mat-cell>
