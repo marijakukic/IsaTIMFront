@@ -98,6 +98,18 @@ export class RegistrationServiceService {
     return this.http.post(this.url + "/rezervacija/saveRezervacija/" + terminId + "/" + mestoId + "/" + korisnikId + "/" + poziv, null).map(res=>res.json());
   }
 
+  saveKartaSaPopustom(terminId: number, mestoId: number, cenaSaPopustom: number) {
+    return this.http.post(this.url + "/rezervacija/saveKartaSaPopustom/" + terminId + "/" + mestoId + "/" + cenaSaPopustom, null).map(res=>res.json());
+  }
+
+  rezervisiKartuSaPopustom(kartaId, korisnikId) {
+    return this.http.post(this.url + "/rezervacija/oneClick/" + kartaId + "/" + korisnikId, null).map(res=>res.json());
+  }
+
+  getKarteSaPopustom(teatarID) {
+    return this.http.get(this.url + "/rezervacija/getKarteSaPopustom/" + teatarID).map(res=>res.json());
+  }
+
   getAllRekvizite(teatarId: number, stanje: string) {
     return this.http.get(this.url + "/fanZona/getAllRekvizite/" + teatarId + "/" + stanje).map(res => res.json());
   }

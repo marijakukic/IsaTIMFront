@@ -55,6 +55,10 @@ export class AllCinemasComponent implements OnInit {
     this.router.navigate(['/reservation', teatarId]);
   }
 
+  rezervisiKarteSaPopustom(teatarId) {
+    this.router.navigate(['/karteSaPopustom', teatarId]);
+  }
+
   posjetiFanZonu(teatarId) {
     this.router.navigate(['/fanzona', teatarId]);
   }

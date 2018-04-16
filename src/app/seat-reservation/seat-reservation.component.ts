@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegistrationServiceService } from '../registration-service.service';
 import { MatTableDataSource } from '@angular/material';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 declare const SVG:any;
 
 @Component({
@@ -20,11 +21,16 @@ export class SeatReservationComponent implements OnInit {
   teatarID: number;
   terminID: number;
   korisnikID: number;
+  korisnik: any;
 
   displayedColumnsPrijateljstvo = ['ime', 'prezime', 'pozovi'];
   dataSourcePrijateljstvo = new MatTableDataSource<any>();
 
+  kartaForm: FormGroup;
+
   ngOnInit() {
+
+    this.korisnik = {};
     
     this.alreadyReserved = [];
     const alreadyRes = this.alreadyReserved;
@@ -34,6 +40,10 @@ export class SeatReservationComponent implements OnInit {
 
     this.teatarID = parseInt(this.route.snapshot.paramMap.get('teatarID'));
     this.terminID = parseInt(this.route.snapshot.paramMap.get('terminID'));
+
+    this.kartaForm = new FormGroup({
+      cenaSaPopustom: new FormControl('',[Validators.required])
+    })
 
     this.draw = SVG('canvas').size(400, 400);
     const border = this.draw.rect(0, 0);
@@ -84,6 +94,7 @@ export class SeatReservationComponent implements OnInit {
 
     this.registrationService.getActiveUser().subscribe(data=>{
       this.korisnikID = data.id;
+      this.korisnik = data;
       this.registrationService.listaPrijatelja(data.id).subscribe(
         data => {
           this.dataSourcePrijateljstvo = new MatTableDataSource<any>(data);
@@ -93,6 +104,19 @@ export class SeatReservationComponent implements OnInit {
     })
 
   }
+
+  saveKartaSaPopustom() {
+    for (let _i = 0; _i < this.alreadyReserved.length - this.alreadyInvited.length; _i++) {
+      this.registrationService.saveKartaSaPopustom(this.terminID, this.alreadyReserved[_i], this.kartaForm.value.cenaSaPopustom).subscribe(
+        data => {
+          console.log('Napravljena rezervacija za korisnika: ');
+          console.log(data);
+          alert("Napravljena karta/karte sa popustom!");
+        }
+      )
+    }
+  }
+
 
   nastavi() {
     console.log("Nastavi");

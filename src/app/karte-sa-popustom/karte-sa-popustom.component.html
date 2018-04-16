@@ -1,0 +1,62 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="nazivTeatra">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv teatra</mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.teatar.naziv}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nazivProjekcije">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Naziv filma/predstave </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.projekcija.film.naziv}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="datum">
+      <mat-header-cell *matHeaderCellDef> Datum </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.projekcija.datum}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="vreme">
+      <mat-header-cell *matHeaderCellDef> Vreme </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.termin.vreme}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="salaNaziv">
+      <mat-header-cell *matHeaderCellDef> Naziv sale </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.termin.salaNaziv}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="mestoNaziv">
+      <mat-header-cell *matHeaderCellDef> Mesto </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.mesto.naziv}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cena">
+      <mat-header-cell *matHeaderCellDef> Cena </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.termin.cena}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cenaSaPopustom">
+      <mat-header-cell *matHeaderCellDef> Cena sa popustom </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> {{karta.cenaSaPopustom}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rezervisi">
+      <mat-header-cell *matHeaderCellDef> Rezervisi </mat-header-cell>
+      <mat-cell *matCellDef="let karta"> 
+        
+        <button mat-button color="primary" (click)="rezervisiKartuSaPopustom(karta)">Rezervisi kartu sa popustom</button>
+         
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

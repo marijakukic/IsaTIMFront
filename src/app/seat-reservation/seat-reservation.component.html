@@ -1,12 +1,10 @@
-<p>
-  seat-reservation works!
-</p>
+<h2>Rezervacija mesta</h2>
 
 <div id="canvas"></div>
 
-<button mat-button color="primary" [disabled]="alreadyReserved.length == 0"(click)="nastavi()">Nastavi</button>
+<button mat-button *ngIf="korisnik.tipKorisnika==='registrovanKorisnik'"  color="primary" [disabled]="alreadyReserved.length == 0"(click)="nastavi()">Nastavi</button>
 
-<div *ngIf="alreadyReserved.length > 1">
+<div *ngIf="alreadyReserved.length > 1 && korisnik.tipKorisnika==='registrovanKorisnik'">
 
   <h2> Pozovite prijatelje </h2>
 
@@ -41,5 +39,24 @@
                      [showFirstLastButtons]="true">
       </mat-paginator>
     </div>
+
+</div>
+
+
+<div *ngIf="alreadyReserved > 0 && korisnik.tipKorisnika==='adminBP'">
+  <form [formGroup]="kartaForm" (submit)="saveKartaSaPopustom()">
+
+    <div class="form-group">
+      <mat-form-field>
+        <input
+                matInput
+                placeholder="Cena sa popustom"
+                class="form-control"
+                formControlName="cenaSaPopustom" >
+      </mat-form-field>
+    </div>
+
+    <button mat-button type="submit" [disabled] = "!kartaForm.valid">Sacuvaj</button>
+</form>
 
 </div>

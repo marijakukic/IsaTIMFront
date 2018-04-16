@@ -81,4 +81,8 @@ export class AllTheatersComponent implements OnInit {
     this.router.navigate(['/sveProjekcije', teatarId]);
   }
 
+  rezervisiKarteSaPopustom(teatarId) {
+    this.router.navigate(['/karteSaPopustom', teatarId]);
+  }
+
 }

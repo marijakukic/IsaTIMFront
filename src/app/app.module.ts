@@ -75,6 +75,7 @@ import { SveProjekcijeComponent } from './sve-projekcije/sve-projekcije.componen
 import { IzmeniFilmComponent } from './izmeni-film/izmeni-film.component';
 import { IzmeniProjekcijuComponent } from './izmeni-projekciju/izmeni-projekciju.component';
 import { IzmeniTeatarComponent } from './izmeni-teatar/izmeni-teatar.component';
+import { KarteSaPopustomComponent } from './karte-sa-popustom/karte-sa-popustom.component';
   
 
 @NgModule({
@@ -107,7 +108,8 @@ import { IzmeniTeatarComponent } from './izmeni-teatar/izmeni-teatar.component';
     SveProjekcijeComponent,
     IzmeniFilmComponent,
     IzmeniProjekcijuComponent,
-    IzmeniTeatarComponent
+    IzmeniTeatarComponent,
+    KarteSaPopustomComponent
   ],
   imports: [
     FormsModule,

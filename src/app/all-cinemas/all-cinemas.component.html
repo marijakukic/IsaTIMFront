@@ -30,12 +30,14 @@
       <mat-cell *matCellDef="let bioskop"> 
         <div *ngIf="korisnik.tipKorisnika==='registrovanKorisnik'">
           <button mat-button color="primary" (click)="rezervisi(bioskop.id)">Rezervisi</button>
+          <button mat-button color="primary" (click)="rezervisiKarteSaPopustom(bioskop.id)">Rezervisi karte sa popustom</button>
           <button mat-button color="warn" (click)="posjetiFanZonu(bioskop.id)">Fan Zona</button>
         </div>
         <div *ngIf="korisnik.tipKorisnika==='adminBP'">
           <button mat-button color="warn" (click)="konfiguracija(bioskop.id)">Konfiguracija</button>
           <button mat-button color="warn" (click)="izmena(bioskop.id)">Izmena</button>
           <button mat-button color="warn" (click)="aktivneProjekcije(bioskop.id)">Prikazi aktivne projekcije</button>
+          <button mat-button color="primary" (click)="rezervisi(bioskop.id)">Kreiraj karte sa popustom</button>
         </div>
       </mat-cell>
     </ng-container>
