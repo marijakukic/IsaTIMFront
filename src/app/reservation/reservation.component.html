@@ -6,6 +6,7 @@
   <div class="form-group">
     <mat-form-field>
       <input [matDatepicker]="datumProjekcije"
+              [min]="minDate"
               matInput
               placeholder="Datum projekcije"
               class="form-control"

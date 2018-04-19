@@ -16,10 +16,13 @@ export class ReservationComponent implements OnInit {
   teatarID: number;
   datumProjekcijeForm: FormGroup;
   projekcije: any;
+  minDate: any;
   
   ngOnInit() {
 
     this.teatarID = parseInt(this.route.snapshot.paramMap.get('teatarID'));
+
+    this.minDate = new Date();
 
     this.datumProjekcijeForm = new FormGroup({
       datumProjekcije: new FormControl('',[Validators.required])

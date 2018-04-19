@@ -47,8 +47,8 @@
         </mat-form-field>
       </form>
       </div>
-      <button mat-button color="primary" (click)="findPonuda(polovanRekvizit.id)">Poslednja ponuda</button>
-      <button mat-button color="warn" (click)="sendPonuda(polovanRekvizit.id)">Licitiraj</button>
+      <button mat-button color="primary" [disabled]="polovanRekvizit.odobren===false" (click)="findPonuda(polovanRekvizit.id)">Poslednja ponuda</button>
+      <button mat-button color="warn" [disabled]="polovanRekvizit.odobren===false" (click)="sendPonuda(polovanRekvizit.id)">Licitiraj</button>
     </mat-card-content>
   </mat-card>
 
@@ -122,7 +122,7 @@
     <mat-card-content>
       <div>
         <p>
-          <button mat-button color="primary" (click)="pregledPonuda(mojRekvizit)">Pregled ponuda</button>
+          <button mat-button color="primary" [disabled]="mojRekvizit.zavrsenaLicitacija===true" (click)="pregledPonuda(mojRekvizit)">Pregled ponuda</button>
         </p>
       </div>
     </mat-card-content>

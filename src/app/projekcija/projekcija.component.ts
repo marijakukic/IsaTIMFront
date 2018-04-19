@@ -18,6 +18,7 @@ export class ProjekcijaComponent implements OnInit {
   sale: any;
   projekcijaID: number;
   projekcija: any;
+  minDate: any;
 
   projekcijaForm: FormGroup;
   terminForm: FormGroup;
@@ -35,6 +36,8 @@ export class ProjekcijaComponent implements OnInit {
     this.filmID = parseInt(this.route.snapshot.paramMap.get('filmID'));
 
     this.aktivanKorak = 1;
+
+    this.minDate = new Date();
 
     this.projekcijaForm = new FormGroup({
       teatarId: new FormControl('',[Validators.required]),

@@ -17,6 +17,7 @@
     <div class="form-group">
       <mat-form-field>
         <input [matDatepicker]="datum"
+                [min]="minDate"
                 matInput
                 placeholder="Datum projekcije"
                 class="form-control"
@@ -69,7 +70,8 @@
       </mat-form-field>
     </div>
 
-    <button mat-button color="primary" type="submit" [disabled] = "!terminForm.valid">Nastavi</button>
+    <button mat-button color="primary" type="submit" [disabled] = "!terminForm.valid">Sacuvaj termin</button>
+    <button mat-button color="primary" routerLink="/adminBP">Vrati se na pocetnu stranicu</button>
 
   </form>
 </div>
