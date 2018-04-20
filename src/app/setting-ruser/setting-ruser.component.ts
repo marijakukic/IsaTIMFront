@@ -86,7 +86,7 @@ export class DialogOverviewExampleDialog {
     saveEdit(){
       this.registrationService.editUser(this.korisnik).subscribe(data=>{
         this.dialogRef.close();
-        this.router.navigate(['/homePageForRUser']);
+        location.reload();
       })
       
     }
@@ -97,7 +97,7 @@ export class DialogOverviewExampleDialog {
       this.registrationService.editUser(korisnik).subscribe(data=>{
         console.log("Promenjena lozinka je: " + data.lozinka);
         this.dialogRef.close();
-        this.router.navigate(['/homePageForRUser']); 
+        location.reload();
       })
       
     }

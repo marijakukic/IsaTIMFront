@@ -2,6 +2,7 @@
 <button mat-button routerLink='/bioskopi'>Bioskopi</button>
 <button mat-button [matMenuTriggerFor]="film">Film</button>
 <button mat-button (click)="odjaviSe()"> Odjava</button>
+<button mat-button color="warn"  (click)="podesavanja()">Podesavanja</button>
 
 <mat-menu #film="matMenu">
     <button mat-menu-item routerLink='/film'>Dodaj film</button>
